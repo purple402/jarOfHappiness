@@ -1,7 +1,22 @@
 import React, { useState } from "react";
+import { Login } from "./components";
+import { logout } from "./firebase.js";
 import "./App.css";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  function handleSubmit(user) {
+    setUser(user);
+  }
+
+  function handleLogoutBtn() {
+    logout();
+    setUser(null);
+  }
+
+  function handleWriteBtn() {}
+
   return (
     <div className="App">
       <div className="titleDiv">
@@ -14,6 +29,22 @@ function App() {
           </p>
         </div>
       </div>
+      {user === null ? (
+        <Login onSubmit={(user) => handleSubmit(user)} />
+      ) : (
+        <div className="user">
+          <span>
+            안녕하세요, {user.displayName}님! 오늘의 행복을 기록해 봐요!
+          </span>
+          <button id="writeBtn" onClick={handleWriteBtn}>
+            작성하기
+          </button>
+          <button id="logoutBtn" onClick={handleLogoutBtn}>
+            로그아웃하기
+          </button>
+        </div>
+      )}
+      <div className="display"></div>
     </div>
   );
 }
