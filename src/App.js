@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Login } from "./components";
+import { Login, Modal, Signup } from "./components";
 import { logout } from "./firebase.js";
 import "./App.css";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [signup, setSignup] = useState(false);
 
   function handleSubmit(user) {
     setUser(user);
@@ -13,6 +14,11 @@ function App() {
   function handleLogoutBtn() {
     logout();
     setUser(null);
+  }
+
+  function finishSignup(user) {
+    setSignup(!signup);
+    setUser(user)
   }
 
   function handleWriteBtn() {}
@@ -30,7 +36,10 @@ function App() {
         </p>
       </div>
       {user === null ? (
-        <Login onSubmit={(user) => handleSubmit(user)} />
+        <Login
+          onSubmit={(user) => handleSubmit(user)}
+          onSignup={() => setSignup(!signup)}
+        />
       ) : (
         <div className="user">
           <span>
@@ -39,10 +48,16 @@ function App() {
           <button id="writeBtn" onClick={handleWriteBtn}>
             작성하기
           </button>
+          <button id="updateProfileBtn" >정보수정하기</button>
           <button id="logoutBtn" onClick={handleLogoutBtn}>
             로그아웃하기
           </button>
         </div>
+      )}
+      {signup && (
+        <Modal closeModal={() =>setSignup(!signup)}>
+          <Signup finishSignup={(user) => finishSignup(user)}/>
+        </Modal>
       )}
       <div className="display"></div>
     </div>

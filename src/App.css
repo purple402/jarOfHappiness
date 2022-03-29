@@ -21,5 +21,7 @@
   margin-right: 10px;
 }
 
-.title p {
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  cursor: pointer;
 }
