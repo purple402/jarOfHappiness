@@ -11,15 +11,19 @@ function Login(props) {
         props.onSubmit(user);
     }
 
+    function handleSignupBtn() {
+        props.onSignup();
+    }
+
     return (
         <div className="Login">
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="id">ID</label>
+                    <label htmlFor="id">이메일주소</label>
                     <input type="email" id="id" name="id" required />
                 </div>
                 <div>
-                    <label htmlFor="password">PASSWORD</label>
+                    <label htmlFor="password">비밀번호</label>
                     <input
                         type="password"
                         id="password"
@@ -31,7 +35,7 @@ function Login(props) {
             </form>
             <div className="signup">
                 <span>회원이 아니신가요?</span>
-                <input type="button" value="회원가입" />
+                <input type="button" value="회원가입" onClick={handleSignupBtn}/>
             </div>
         </div>
     );
