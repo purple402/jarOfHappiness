@@ -1,6 +1,12 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBKOTaYFavnsmOoQ2SnhwZezPlK6i4OVC8",
@@ -33,4 +39,18 @@ async function logout() {
   }
 }
 
-export { login, logout };
+async function createUser(email, password, displayName) {
+  try {
+    // 계정 생성
+    await createUserWithEmailAndPassword(auth, email, password);
+    // 별명 설정
+    await updateProfile(auth.currentUser, { displayName: displayName });
+    // 사용자별 문서 생성
+    await createUserDoc(auth.currentUser);
+    return auth.currentUser;
+  } catch (error) {
+    console.log("firebase createUser", error.message);
+  }
+}
+
+export { login, logout, createUser };
