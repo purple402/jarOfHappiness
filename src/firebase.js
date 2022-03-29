@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -7,6 +6,15 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  setDoc,
+  doc,
+  query,
+  getDocs,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBKOTaYFavnsmOoQ2SnhwZezPlK6i4OVC8",
@@ -50,6 +58,20 @@ async function createUser(email, password, displayName) {
     return auth.currentUser;
   } catch (error) {
     console.log("firebase createUser", error.message);
+  }
+}
+
+async function createUserDoc(user) {
+  try {
+    const newUserColRef = collection(DB, "Happiness");
+    const id = user.uid;
+    const newUserDoc = {
+      id,
+      createdAt: Date.now(),
+    };
+    await setDoc(doc(newUserColRef, id), newUserDoc);
+  } catch (error) {
+    console.log("firebase createUserDoc", error.message);
   }
 }
 
