@@ -29,6 +29,7 @@ function Signup(props) {
           <input id="displayName" name="displayName" required />
         </div>
         <input type="submit" value="회원가입하기" />
+        <input type="button" value="취소하기" />
       </form>
     </div>
   );
