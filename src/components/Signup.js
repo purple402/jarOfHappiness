@@ -8,7 +8,6 @@ function Signup(props) {
     const password = e.target[1].value;
     const displayName = e.target[2].value;
     const user = await createUser(email, password, displayName);
-    console.log("Signup createUser", user);
     props.finishSignup(user);
   }
 
