@@ -27,7 +27,7 @@ function App() {
     <div className="App">
       <div className="titleDiv">
         <div className="title">
-          <span id="emoji">✏️</span>
+          <span id="emoji">🍬</span>
           <span id="appTitle">해피 저금통</span>
         </div>
         <p id="titleInfo">
