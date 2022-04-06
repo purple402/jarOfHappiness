@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Login, Modal, Signup } from "./components";
+import { Login, Modal, Signup, UpdateProfile } from "./components";
 import { logout } from "./firebase.js";
 import "./App.css";
 
 function App() {
   const [user, setUser] = useState(null);
   const [signup, setSignup] = useState(false);
+  const [updateProfile, setUpdateProfile] = useState(false);
 
   function handleSubmit(user) {
     setUser(user);
@@ -48,7 +49,7 @@ function App() {
           <button id="writeBtn" onClick={handleWriteBtn}>
             작성하기
           </button>
-          <button id="updateProfileBtn" >정보수정하기</button>
+          <button id="updateProfileBtn" onClick={() => setUpdateProfile(true)} >정보수정하기</button>
           <button id="logoutBtn" onClick={handleLogoutBtn}>
             로그아웃하기
           </button>
@@ -57,6 +58,11 @@ function App() {
       {signup && (
         <Modal closeModal={() =>setSignup(!signup)}>
           <Signup finishSignup={(user) => finishSignup(user)}/>
+        </Modal>
+      )}
+      {updateProfile && (
+        <Modal closeModal={() => setUpdateProfile(!updateProfile)}>
+          <UpdateProfile finishUpdateProfile={() => setUpdateProfile(!updateProfile)}/>
         </Modal>
       )}
       <div className="display"></div>
