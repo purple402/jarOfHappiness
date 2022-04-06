@@ -52,13 +52,17 @@ async function createUser(email, password, displayName) {
     // 계정 생성
     await createUserWithEmailAndPassword(auth, email, password);
     // 별명 설정
-    await updateProfile(auth.currentUser, { displayName: displayName });
+    await updateUserDisplayName(displayName);
     // 사용자별 문서 생성
     await createUserDoc(auth.currentUser);
     return auth.currentUser;
   } catch (error) {
     console.log("firebase createUser", error.message);
   }
+}
+
+async function updateUserDisplayName(displayName) {
+  await updateProfile(auth.currentUser, { displayName: displayName });
 }
 
 async function createUserDoc(user) {
@@ -75,4 +79,13 @@ async function createUserDoc(user) {
   }
 }
 
-export { login, logout, createUser };
+function getCurrentUser() {
+  try {
+    const user = auth.currentUser;
+    return user;
+  } catch (error) {
+    console.log("firebase getCurrentUser", error.message);
+  }
+}
+
+export { login, logout, createUser, getCurrentUser, updateUserDisplayName };
