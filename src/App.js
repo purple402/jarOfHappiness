@@ -15,7 +15,7 @@ function App() {
           startWriting={() => setIsWriting(true)}
         />
       ) : (
-        <Writing />
+        <Writing finishWriting={() => setIsWriting(false)}/>
       )}
     </div>
   );

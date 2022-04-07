@@ -1,12 +1,13 @@
-function Writing() {
 import React from "react";
 
+function Writing(props) {
   function handleSubmit(e) {
     e.preventDefault();
     console.log("handleSubmit");
   }
 
   function handleCancel() {
+    props.finishWriting();
   }
 
   return (
@@ -29,4 +30,4 @@ import React from "react";
   );
 }
 
-export default Writing
+export default Writing;
