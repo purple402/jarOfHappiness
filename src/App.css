@@ -22,7 +22,8 @@
 }
 
 input[type="submit"]:hover,
-input[type="button"]:hover {
+input[type="button"]:hover,
+button {
   cursor: pointer;
 }
 
