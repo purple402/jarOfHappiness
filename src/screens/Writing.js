@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { createHappiness } from "../firebase";
 
 function Writing(props) {
   const dateRef = useRef(null);
@@ -11,11 +12,10 @@ function Writing(props) {
     if (hours < 3) {
       dateValue.setDate(today.getDate() - 1);
     }
-    
+
     let year = dateValue.getFullYear();
     let month = dateValue.getMonth() + 1;
     let date = dateValue.getDate();
-    let day = dateValue.getDay();
 
     // 날짜 형식으로 반환
     return `${year}-${month < 10 ? "0" + month : month}-${
@@ -32,7 +32,10 @@ function Writing(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("handleSubmit");
+    const text = e.target[0].value;
+    const date = e.target[1].value;
+    createHappiness({ text, date });
+    props.finishWriting();
   }
 
   function handleCancel() {
