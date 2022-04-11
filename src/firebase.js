@@ -35,7 +35,8 @@ async function login(email, password) {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     return user;
   } catch (error) {
-    console.log("firebase login", error.message);
+  console.log("firebase login", error.code);
+    return error.code;
   }
 }
 
