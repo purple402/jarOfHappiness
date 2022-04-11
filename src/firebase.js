@@ -89,12 +89,15 @@ function getCurrentUser() {
   }
 }
 
-async function createHappiness({text, date}) {
+async function createHappiness({ text, date }) {
   const year = date.substring(0, 4);
   const uid = auth.currentUser.uid;
   const yearRef = await addDoc(collection(DB, "Happiness", uid, year), {});
   const newHappiness = {text, date, createdAt: Date.now()}
-  await setDoc(yearRef, newHappiness)
+  const newHappiness = { text, date, createdAt: Date.now() };
+  await setDoc(yearRef, newHappiness);
+}
+
 }
 
 export {
