@@ -93,11 +93,16 @@ async function createHappiness({ text, date }) {
   const year = date.substring(0, 4);
   const uid = auth.currentUser.uid;
   const yearRef = await addDoc(collection(DB, "Happiness", uid, year), {});
-  const newHappiness = {text, date, createdAt: Date.now()}
   const newHappiness = { text, date, createdAt: Date.now() };
   await setDoc(yearRef, newHappiness);
 }
 
+async function countHappiness(year) {
+  const uid = auth.currentUser.uid;
+  const yearRef = collection(DB, "Happiness", uid, year);
+  const querySnapshot = await getDocs(yearRef);
+  const number = querySnapshot._snapshot.docChanges.length;
+  return number;
 }
 
 export {
@@ -107,4 +112,5 @@ export {
   getCurrentUser,
   updateUserDisplayName,
   createHappiness,
+  countHappiness,
 };
