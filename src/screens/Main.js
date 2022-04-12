@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Login, Modal, Signup, UpdateProfile } from "../components";
+import { Login, Modal, Signup, UpdateProfile, UserData } from "../components";
 import { logout } from "../firebase";
 
 function Main(props) {
@@ -71,7 +71,7 @@ function Main(props) {
           />
         </Modal>
       )}
-      <div className="display"></div>
+      {user && <UserData />}
     </div>
   );
 }
