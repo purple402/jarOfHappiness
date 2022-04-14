@@ -23,7 +23,7 @@ function Main(props) {
   }
 
   function handleWriteBtn() {
-      props.startWriting();
+    props.startWriting();
   }
 
   return (
@@ -45,18 +45,25 @@ function Main(props) {
         />
       ) : (
         <div className="user">
-          <span>
-            안녕하세요, {user.displayName}님! 오늘의 행복을 기록해 봐요!
-          </span>
-          <button id="writeBtn" onClick={handleWriteBtn}>
-            작성하기
-          </button>
-          <button id="updateProfileBtn" onClick={() => setUpdateProfile(true)}>
-            정보수정하기
-          </button>
-          <button id="logoutBtn" onClick={handleLogoutBtn}>
-            로그아웃하기
-          </button>
+          <div>
+            <span>
+              안녕하세요, {user.displayName}님! 오늘의 행복을 기록해 봐요!
+            </span>
+          </div>
+          <div>
+            <button id="writeBtn" onClick={handleWriteBtn}>
+              작성하기
+            </button>
+            <button
+              id="updateProfileBtn"
+              onClick={() => setUpdateProfile(true)}
+            >
+              정보수정하기
+            </button>
+            <button id="logoutBtn" onClick={handleLogoutBtn}>
+              로그아웃하기
+            </button>
+          </div>
         </div>
       )}
       {signup && (
