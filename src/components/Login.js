@@ -1,14 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import { login } from "../firebase.js";
+import Alert from './Alert'
 import "./Login.css";
 
 function Login(props) {
+    const [error, setError] = useState(null)
     async function handleSubmit(e) {
         e.preventDefault();
         const id = e.target[0].value;
         const password = e.target[1].value;
         const user = await login(id, password);
-        props.onSubmit(user);
+        if (typeof user !== "string") {
+            props.onSubmit(user);
+        } else {
+            setError(user);
+        }
     }
 
     function handleSignupBtn() {
@@ -37,6 +43,8 @@ function Login(props) {
                 <span>회원이 아니신가요?</span>
                 <input type="button" value="회원가입" onClick={handleSignupBtn}/>
             </div>
+            {error && <Alert code={error} finishAlert={(error) => setError(error)}/>}
+            
         </div>
     );
 }
