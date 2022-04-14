@@ -19,9 +19,19 @@ function Alert(props) {
         messageRef.current.innerHTML =
           "오류가 발생했습니다. </br> 잠시 후 다시 시도해주세요.";
     }
+    let timer = setTimeout(() => {
+      setShow(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  let timer2 = setTimeout(() => {
+    props.finishAlert(null);
+  }, 3000);
+
   return (
     <div className="Alert">
-      <div className="alertBody">
+      <div className={show ? "alertBody show" : "alertBody"}>
         <p id="message" ref={messageRef}></p>
       </div>
     </div>
