@@ -13,6 +13,11 @@
   align-items: center;
 }
 
+.title {
+  display: flex;
+  align-items: center;
+}
+
 .title span {
   font-size: 30px;
 }
