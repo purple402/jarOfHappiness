@@ -33,8 +33,10 @@ function Writing(props) {
   function handleSubmit(e) {
     e.preventDefault();
     const text = e.target[0].value;
-    const date = e.target[1].value;
-    createHappiness({ text, date });
+    const emoji = e.target[1].value || null;
+    const date = e.target[2].value;
+    
+    createHappiness({ text, emoji, date });
     props.finishWriting();
   }
 
@@ -52,8 +54,14 @@ function Writing(props) {
       </div>
       <div className="writingDiv">
         <form onSubmit={handleSubmit}>
-          <textarea placeholder="나중에 다시 보고싶은 행복을 적어주세요" />
-          <input id="date" type="date" ref={dateRef} />
+          <textarea
+            placeholder="나중에 다시 보고싶은 행복을 적어주세요"
+            required
+          />
+          <label htmlFor="emoji">🌸</label>
+          <input id="emoji" type="text" placeholder="행복의 아이콘은?" />
+          <label htmlFor="date">📆</label>
+          <input id="date" type="date" ref={dateRef} required />
           <input type="submit" value="저금통에 넣기" />
           <input type="button" value="다음에 적기" onClick={handleCancel} />
         </form>
