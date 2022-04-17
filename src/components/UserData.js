@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from "react";
-import {countHappiness} from "../firebase"
+import React, { useEffect, useRef, useState } from "react";
+import { getHappiness } from "../firebase";
 
 function UserData() {
   const canvasRef = useRef(null);
   let ctx = null;
-  //const contextRef = useRef(null);
   const informRef = useRef(null);
 
   useEffect(async () => {
@@ -37,12 +36,12 @@ function UserData() {
     ctx.clip();
 
     const today = new Date();
-    const year = (today.getFullYear()).toString();
-    const num = await countHappiness(year);
-    if (num === 0) {
-        informRef.current.innerHTML = `첫 번째 행복을 적어보세요!`;
+    const year = today.getFullYear().toString();
+    const { data, length } = await getHappiness(year);
+    if (length === 0) {
+      informRef.current.innerHTML = `첫 번째 행복을 적어보세요!`;
     } else {
-        informRef.current.innerHTML = `${year}년에는 ${num}개의 행복을 저장했어요`
+      informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요`;
     }
     createBall(num)
   }, []);
