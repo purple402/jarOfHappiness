@@ -43,21 +43,30 @@ function UserData() {
     } else {
       informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요`;
     }
-    createBall(num)
+    createBall(data, length);
   }, []);
 
   // 공 만들기
-  const createBall = (n) => {
-    for (let i = 0; i < n; i++) {
+  const createBall = (data, n) => {
+    let i = 0;
+    while (i < n) {
       const coordX = Math.random() * (240 - 60) + 60;
       const coordY = Math.random() * (300 - 65) + 65;
-      const color = "#" + Math.floor(Math.random() * 16777215).toString(16);
-      const radius = Math.random() * (20 - 10) + 10;
-      ctx.beginPath();
-      ctx.arc(coordX, coordY, radius, 0, 2 * Math.PI);
-      // ctx.stroke();
-      ctx.fillStyle = color;
-      ctx.fill();
+      const radius = Math.random() * (30 - 20) + 20;
+      ctx.font = `${radius}px serif`;
+      const emoji = data[i].emoji;
+      if (emoji) {
+        ctx.fillText(emoji, coordX, coordY);
+      } else {
+        const color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+        ctx.fillStyle = color;
+        const icon = "❤";
+        ctx.fillText(icon, coordX, coordY);
+        // 윤곽선그리기
+        ctx.lineWidth = 2;
+        ctx.strokeText(icon, coordX, coordY);
+      }
+      i++;
     }
   };
 
