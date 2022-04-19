@@ -30,13 +30,13 @@ function Writing(props) {
     dateRef.current.min = `${today.substring(0, 4)}-01-01`;
   }, []);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const text = e.target[0].value;
     const emoji = e.target[1].value || null;
     const date = e.target[2].value;
     
-    createHappiness({ text, emoji, date });
+    await createHappiness({ text, emoji, date });
     props.finishWriting();
   }
 
