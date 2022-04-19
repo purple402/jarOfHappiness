@@ -3,3 +3,39 @@
     margin-top: 20px;
 }
 
+.selectYearDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+#lastYear, #nextYear {
+    cursor: pointer;
+}
+
+.UserData #number {
+    text-align: center;
+}
+
+/* list */
+.container {
+    margin: 6px 0;
+}
+
+.contents {
+    border: 1px solid black;
+    padding: 5px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.contents .icon {
+    width: 30px;
+    padding: 0 3px;
+    margin-top: 3px;
+}
+
+#iconEmoji {
+    font-size: 20px;
+}
