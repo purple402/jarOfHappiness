@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { getHappiness } from "../firebase";
+import "./UserData.css";
 
 function UserData() {
   const informRef = useRef(null);
