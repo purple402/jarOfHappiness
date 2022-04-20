@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { getHappiness } from "../firebase";
+import { getHappiness, countHappiness } from "../firebase";
 import "./UserData.css";
 
 function UserData() {
@@ -7,6 +7,7 @@ function UserData() {
   const [list, setList] = useState([]);
   const thisYear = new Date().getFullYear();
   const [year, setYear] = useState(thisYear);
+  const [lastYearCount, setLastYearCount] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -18,6 +19,9 @@ function UserData() {
         informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요`;
       }
       createList(data);
+
+      const lastYear = await countHappiness((year - 1).toString());
+      setLastYearCount(lastYear)
     }
     fetchData();
   }, [year]);
@@ -48,7 +52,7 @@ function UserData() {
   return (
     <div className="UserData">
       <div className="selectYearDiv">
-        <button id="lastYear" onClick={() => setYear(year - 1)}>
+        <button id="lastYear" onClick={() => setYear(year - 1)} disabled={lastYearCount === 0 && true}>
           ◀
         </button>
         <span id="thisYear">{year}</span>
