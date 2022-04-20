@@ -39,7 +39,7 @@ function UserData() {
             </div>
             <div className="data">
               <span className="createdAt">{currentData.date}</span>
-              <p className="textValue">{currentData.text}</p>
+              <p className="textValue" style={{whiteSpace: "pre-line"}}>{currentData.text}</p>
             </div>
           </div>
         </div>

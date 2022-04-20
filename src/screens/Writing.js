@@ -35,8 +35,11 @@ function Writing(props) {
     const text = e.target[0].value;
     const emoji = e.target[1].value || null;
     const date = e.target[2].value;
+
+    // 문자열 마지막 공백과 개행문자 제거
+    let str = text.replace(/\n\s*$/, '');
+    await createHappiness({ "text" : str, emoji, date });
     
-    await createHappiness({ text, emoji, date });
     props.finishWriting();
   }
 
