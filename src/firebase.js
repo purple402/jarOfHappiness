@@ -113,6 +113,14 @@ async function getHappiness(year) {
   return { data, length };
 }
 
+async function countHappiness(year) {
+  const uid = auth.currentUser.uid;
+  const yearRef = collection(DB, "Happiness", uid, year);
+  const querySnapshot = await getDocs(yearRef);
+  let count = querySnapshot._snapshot.docChanges.length;
+  return count;
+}
+
 export {
   login,
   logout,
@@ -121,4 +129,5 @@ export {
   updateUserDisplayName,
   createHappiness,
   getHappiness,
+  countHappiness,
 };
