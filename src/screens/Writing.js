@@ -58,7 +58,7 @@ function Writing(props) {
       <div className="writingDiv">
         <form onSubmit={handleSubmit}>
           <textarea
-            placeholder="나중에 다시 보고싶은 행복을 적어주세요"
+            placeholder="간직하고싶은 행복을 적어주세요"
             required
           />
           <label htmlFor="emoji">🌸</label>
