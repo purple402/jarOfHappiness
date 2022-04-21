@@ -1,8 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createHappiness } from "../firebase";
+import Picker from "emoji-picker-react";
 
 function Writing(props) {
   const dateRef = useRef(null);
+  const [chosenEmoji, setChosenEmoji] = useState(null);
+  const [emojiPicker, setEmojiPicker] = useState(false);
+
   function getToday() {
     const today = new Date();
     let dateValue = new Date(today);
@@ -46,6 +50,15 @@ function Writing(props) {
   function handleCancel() {
     props.finishWriting();
   }
+
+  const onEmojiClick = (event, emojiObject) => {
+    setChosenEmoji(emojiObject.emoji);
+  };
+
+  const handleEmojiBtn = () => {
+    console.log("togglePicker");
+    setEmojiPicker(!emojiPicker);
+  };
 
   return (
     <div className="Writing">
