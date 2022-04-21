@@ -68,18 +68,41 @@ function Writing(props) {
           <span id="appTitle">해피 저금통</span>
         </div>
       </div>
+      {/* 작성 */}
       <div className="writingDiv">
         <form onSubmit={handleSubmit}>
           <textarea
             placeholder="간직하고싶은 행복을 적어주세요"
             required
           />
-          <label htmlFor="emoji">🌸</label>
-          <input id="emoji" type="text" placeholder="행복의 아이콘은?" />
-          <label htmlFor="date">📆</label>
-          <input id="date" type="date" ref={dateRef} required />
-          <input type="submit" value="저금통에 넣기" />
-          <input type="button" value="다음에 적기" onClick={handleCancel} />
+          <div className="writingSetting">
+            <div className="writingDetail">
+              <label htmlFor="date">📆</label>
+              <input id="date" type="date" ref={dateRef} required />
+            </div>
+            <div className="writingDetail">
+              <label htmlFor="emoji">🌸</label>
+              <input
+                id="emoji"
+                type="text"
+                placeholder="행복의 아이콘은?"
+                onClick={handleEmojiBtn}
+                disabled
+                value={chosenEmoji}
+              />
+              <input
+                type="button"
+                id="emojiBtn"
+                value={chosenEmoji || "😊"}
+                onClick={handleEmojiBtn}
+              />
+              {emojiPicker && <Picker onEmojiClick={onEmojiClick} />}
+            </div>
+          </div>
+          <div className="writingSetting">
+            <input type="button" value="다음에 적기" onClick={handleCancel} className="writingSubmitBtn"/>
+            <input type="submit" value="저금통에 넣기" className="writingSubmitBtn"/>
+          </div>
         </form>
       </div>
     </div>

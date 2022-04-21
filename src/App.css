@@ -52,3 +52,21 @@ button {
   width: 100%;
   height: 100px;
 }
+
+.writingSetting {
+  display: flex;
+  margin: 10px 0;
+}
+
+.writingDetail {
+  display: flex;
+  width: 50%;
+}
+
+input#emoji {
+  width: 70%;
+}
+
+.writingSubmitBtn {
+  width: 100%
+}
