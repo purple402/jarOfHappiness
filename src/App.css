@@ -1,4 +1,4 @@
-.Main {
+.Main, .Writing {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,6 +46,7 @@ button {
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
+  width: 100%;
 }
 
 .writingDiv textarea {
@@ -53,9 +54,14 @@ button {
   height: 100px;
 }
 
+#writingForm {
+  width: 100%;
+}
+
 .writingSetting {
   display: flex;
   margin: 10px 0;
+  width: 100%;
 }
 
 .writingDetail {
@@ -69,4 +75,10 @@ input#emoji {
 
 .writingSubmitBtn {
   width: 100%
+}
+
+aside.emoji-picker-react {
+  z-index: 1;
+  position: absolute;
+  top: 270px;
 }
