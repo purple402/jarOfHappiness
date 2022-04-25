@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createHappiness } from "../firebase";
-import Picker from "emoji-picker-react";
+import { EmojiPicker } from "../components";
 
 function Writing(props) {
   const dateRef = useRef(null);
   const [chosenEmoji, setChosenEmoji] = useState(null);
-  const [emojiPicker, setEmojiPicker] = useState(false);
+  const [displayEmojiPicker, setDisplayEmojiPicker] = useState(false);
 
   function getToday() {
     // 오늘 날짜 가져오기
@@ -55,12 +55,8 @@ function Writing(props) {
     props.finishWriting();
   }
 
-  const onEmojiClick = (event, emojiObject) => {
-    setChosenEmoji(emojiObject.emoji);
-  };
-
   const handleEmojiBtn = () => {
-    setEmojiPicker(!emojiPicker);
+    setDisplayEmojiPicker(!displayEmojiPicker);
   };
 
   return (
@@ -88,7 +84,13 @@ function Writing(props) {
                 value={chosenEmoji || "📌"}
                 onClick={handleEmojiBtn}
               />
-              {emojiPicker && <Picker onEmojiClick={onEmojiClick} />}
+              <EmojiPicker
+                selectEmoji={(emoji) => setChosenEmoji(emoji)}
+                displayEmojiPicker={displayEmojiPicker}
+                setDisplayEmojiPicker={(display) =>
+                  setDisplayEmojiPicker(display)
+                }
+              />
             </div>
           </div>
           <div className="writingSetting">
