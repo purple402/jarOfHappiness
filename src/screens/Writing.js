@@ -39,8 +39,8 @@ function Writing(props) {
   async function handleSubmit(e) {
     e.preventDefault();
     const text = e.target[0].value;
-    const emoji = e.target[1].value || null;
-    const date = e.target[2].value;
+    const date = e.target[1].value;
+    const emoji = chosenEmoji;
 
     // 문자열 마지막 공백과 개행문자 제거
     let str = text.replace(/\n\s*$/, "");
