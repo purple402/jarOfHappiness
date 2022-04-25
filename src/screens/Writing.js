@@ -77,15 +77,15 @@ function Writing(props) {
           <textarea placeholder="간직하고싶은 행복을 적어주세요" required />
           <div className="writingSetting">
             <div className="writingDetail">
-              <label htmlFor="date">📆</label>
+              <label htmlFor="date">📆 날짜</label>
               <input id="date" type="date" ref={dateRef} required />
             </div>
             <div className="writingDetail">
-              <label htmlFor="emoji">🌸</label>
+              <label htmlFor="emoji">🌸 아이콘</label>
               <input
                 type="button"
                 id="emojiBtn"
-                value={chosenEmoji || "😊"}
+                value={chosenEmoji || "📌"}
                 onClick={handleEmojiBtn}
               />
               {emojiPicker && <Picker onEmojiClick={onEmojiClick} />}
