@@ -45,8 +45,9 @@ function Writing(props) {
     // 문자열 마지막 공백과 개행문자 제거
     let str = text.replace(/\n\s*$/, "");
     // firebase에 자료 저장
-    await createHappiness({ "text": str, emoji, date });
+    await createHappiness({ text: str, emoji, date });
 
+    // 메인 스크린으로 나감
     props.finishWriting();
   }
 
@@ -59,7 +60,6 @@ function Writing(props) {
   };
 
   const handleEmojiBtn = () => {
-    console.log("togglePicker");
     setEmojiPicker(!emojiPicker);
   };
 
@@ -74,10 +74,7 @@ function Writing(props) {
       {/* 작성 */}
       <div className="writingDiv">
         <form id="writingForm" onSubmit={handleSubmit}>
-          <textarea
-            placeholder="간직하고싶은 행복을 적어주세요"
-            required
-          />
+          <textarea placeholder="간직하고싶은 행복을 적어주세요" required />
           <div className="writingSetting">
             <div className="writingDetail">
               <label htmlFor="date">📆</label>
@@ -85,14 +82,6 @@ function Writing(props) {
             </div>
             <div className="writingDetail">
               <label htmlFor="emoji">🌸</label>
-              {/* <input
-                id="emoji"
-                type="text"
-                placeholder="행복의 아이콘은?"
-                onClick={handleEmojiBtn}
-                disabled
-                value={chosenEmoji}
-              /> */}
               <input
                 type="button"
                 id="emojiBtn"
@@ -103,8 +92,17 @@ function Writing(props) {
             </div>
           </div>
           <div className="writingSetting">
-            <input type="button" value="다음에 적기" onClick={handleCancel} className="writingSubmitBtn"/>
-            <input type="submit" value="저금통에 넣기" className="writingSubmitBtn"/>
+            <input
+              type="button"
+              value="다음에 적기"
+              onClick={handleCancel}
+              className="writingSubmitBtn"
+            />
+            <input
+              type="submit"
+              value="저금통에 넣기"
+              className="writingSubmitBtn"
+            />
           </div>
         </form>
       </div>
