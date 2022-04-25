@@ -8,6 +8,7 @@ function Writing(props) {
   const [emojiPicker, setEmojiPicker] = useState(false);
 
   function getToday() {
+    // 오늘 날짜 가져오기
     const today = new Date();
     let dateValue = new Date(today);
 
@@ -28,6 +29,7 @@ function Writing(props) {
   }
 
   useEffect(() => {
+    // 올해 1월1일부터 오늘까지만 입력 가능
     const today = getToday();
     dateRef.current.value = today;
     dateRef.current.max = today;
@@ -41,9 +43,10 @@ function Writing(props) {
     const date = e.target[2].value;
 
     // 문자열 마지막 공백과 개행문자 제거
-    let str = text.replace(/\n\s*$/, '');
-    await createHappiness({ "text" : str, emoji, date });
-    
+    let str = text.replace(/\n\s*$/, "");
+    // firebase에 자료 저장
+    await createHappiness({ "text": str, emoji, date });
+
     props.finishWriting();
   }
 
@@ -70,7 +73,7 @@ function Writing(props) {
       </div>
       {/* 작성 */}
       <div className="writingDiv">
-        <form onSubmit={handleSubmit}>
+        <form id="writingForm" onSubmit={handleSubmit}>
           <textarea
             placeholder="간직하고싶은 행복을 적어주세요"
             required
@@ -82,14 +85,14 @@ function Writing(props) {
             </div>
             <div className="writingDetail">
               <label htmlFor="emoji">🌸</label>
-              <input
+              {/* <input
                 id="emoji"
                 type="text"
                 placeholder="행복의 아이콘은?"
                 onClick={handleEmojiBtn}
                 disabled
                 value={chosenEmoji}
-              />
+              /> */}
               <input
                 type="button"
                 id="emojiBtn"
