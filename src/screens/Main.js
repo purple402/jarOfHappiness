@@ -45,22 +45,22 @@ function Main(props) {
         />
       ) : (
         <div className="user">
-          <div>
+          <div id="userGreeting">
             <span>
               안녕하세요, {user.displayName}님! 오늘의 행복을 기록해 봐요!
             </span>
           </div>
-          <div>
-            <button id="writeBtn" onClick={handleWriteBtn}>
+          <div id="userButtons">
+            <button id="writeBtn" className="greenBtn" onClick={handleWriteBtn}>
               작성하기
             </button>
             <button
-              id="updateProfileBtn"
+              id="updateProfileBtn" className="yellowBtn"
               onClick={() => setUpdateProfile(true)}
             >
               정보수정하기
             </button>
-            <button id="logoutBtn" onClick={handleLogoutBtn}>
+            <button id="logoutBtn" className="blueBtn" onClick={handleLogoutBtn}>
               로그아웃하기
             </button>
           </div>

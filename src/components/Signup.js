@@ -13,22 +13,28 @@ function Signup(props) {
 
   return (
     <div className="Signup">
-      <span>회원가입을 위한 정보를 적어주세요</span>
+      <div className="modalTitle">
+        <span >회원가입</span>
+      </div>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="modalFormDiv">
           <label htmlFor="id">이메일</label>
           <input type="email" id="id" name="id" required />
         </div>
-        <div>
+        <div className="modalFormDiv">
           <label htmlFor="password">비밀번호</label>
           <input type="password" id="password" name="password" required />
         </div>
-        <div>
+        <div className="modalFormDiv">
           <label htmlFor="displayName">별명</label>
           <input id="displayName" name="displayName" required />
         </div>
         <input type="submit" value="회원가입하기" />
-        <input type="button" value="취소하기" onClick={() => props.finishSignup(null)}/>
+        <input
+          type="button"
+          value="취소하기"
+          onClick={() => props.finishSignup(null)}
+        />
       </form>
     </div>
   );

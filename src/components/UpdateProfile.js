@@ -23,7 +23,7 @@ function UpdateProfile(props) {
 
   return (
     <div className="UpdateProfile">
-      <div>
+      <div className="modalTitle">
         <span>프로필 수정</span>
       </div>
       <form onSubmit={handleSubmit}>
