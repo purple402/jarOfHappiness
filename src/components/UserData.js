@@ -16,12 +16,16 @@ function UserData() {
       if (length === 0) {
         informRef.current.innerHTML = `첫 번째 행복을 적어보세요!`;
       } else {
-        informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요`;
+        if (thisYear === year) {
+          informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요.<br/><br/>작성 내용은 내년에 확인할 수 있습니다.`;
+        } else {
+          informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요.`;
+        }
       }
       createList(data);
 
       const lastYear = await countHappiness((year - 1).toString());
-      setLastYearCount(lastYear)
+      setLastYearCount(lastYear);
     }
     fetchData();
   }, [year]);
@@ -32,14 +36,15 @@ function UserData() {
     while (i < data.length) {
       const currentData = data[i];
       createdList.push(
-        <div className="container" id={currentData.createdAt}>
+        <div className="container" key={currentData.createdAt}>
           <div className="contents">
             <div className="icon">
               <span id="iconEmoji">{currentData.emoji || "📌"}</span>
             </div>
             <div className="data">
-              <span className="createdAt">{currentData.date}</span>
-              <p className="textValue" style={{whiteSpace: "pre-line"}}>{currentData.text}</p>
+                <span className="createdAt">{currentData.date}</span>
+                {thisYear === year || (<p className="textValue" style={{ whiteSpace: "pre-line" }}> {currentData.text}
+              </p>)}
             </div>
           </div>
         </div>
@@ -52,10 +57,14 @@ function UserData() {
   return (
     <div className="UserData">
       <div className="selectYearDiv">
-        <button id="lastYear" onClick={() => setYear(year - 1)} disabled={lastYearCount === 0 && true}>
+        <button
+          id="lastYear"
+          onClick={() => setYear(year - 1)}
+          disabled={lastYearCount === 0 && true}
+        >
           ◀
         </button>
-        <span id="thisYear">{year}</span>
+        <span id="thisYear">{year}년</span>
         <button
           id="nextYear"
           onClick={() => setYear(year + 1)}
