@@ -34,3 +34,23 @@
 #modalCloseBtn:hover {
   cursor: pointer;
 }
+
+.modalTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.modalFormDiv {
+  margin: 8px;
+  display: flex;
+}
+
+.modalFormDiv label {
+  width: 100px;
+  
+}
+
+.modalFormDiv input {
+  width: 100%;
+}

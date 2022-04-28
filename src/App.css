@@ -19,6 +19,7 @@
   align-items: center;
   padding: 0 50px;
   max-width: 700px;
+  width: 100%;
 }
 
 /* title */
@@ -60,6 +61,23 @@ button {
   align-items: center;
   margin: 10px 0;
 }
+
+#userGreeting {
+  margin: 20px 0;
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+}
+
+#userName {
+  position: absolute;
+  left: 104px;
+  top: -3px;
+  opacity: 0.7;
+  z-index: -2;
+  padding: 3px 1px;
+}
+
 
 /* buttons */
 .greenBtn, .yellowBtn, .blueBtn {
@@ -104,7 +122,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 20px;
   width: 100%;
 }
 
@@ -112,7 +130,20 @@ button {
   width: 100%;
   height: 100px;
   font-family: "Cafe24SsurroundAir";
+  resize: none;
+  font-size: 18px;
+  padding: 15px;
+  border: 1px solid gray;
+  /* color: #5b3917; */
 }
+
+/* .writingDiv textarea::placeholder {
+  color: #cd853f;
+}
+
+.writingDiv textarea:focus {
+  outline: 1px solid #a36b32;
+} */
 
 #writingForm {
   width: 100%;
@@ -120,28 +151,44 @@ button {
 
 .writingSetting {
   display: flex;
-  margin: 10px 0;
+  margin: 10px 0 30px 0;
   width: 100%;
 }
 
 .writingDetail {
   display: flex;
   width: 50%;
+  padding: 0 20px;
+  justify-content: space-between;
 }
 
-input#emoji {
-  width: 70%;
+.writingDetail label {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+#dateInput {
+  font-size: 16px;
+  padding: 4px 10px 0 10px;
 }
 
 .writingSubmitBtn {
   width: 100%
 }
 
+#emojiBtn {
+  font-size: 18px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+
 .emojiPickerContainer {
   display: none;
   z-index: 1;
   position: absolute;
-  top: 270px;
+  top: 335px;
 }
 
 .emojiPickerContainer.display {
