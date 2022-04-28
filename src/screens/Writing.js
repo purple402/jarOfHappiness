@@ -74,7 +74,7 @@ function Writing(props) {
           <div className="writingSetting">
             <div className="writingDetail">
               <label htmlFor="date">📆 날짜</label>
-              <input id="date" type="date" ref={dateRef} required />
+              <input id="dateInput" type="date" ref={dateRef} required />
             </div>
             <div className="writingDetail">
               <label htmlFor="emoji">🌸 아이콘</label>
@@ -98,12 +98,12 @@ function Writing(props) {
               type="button"
               value="다음에 적기"
               onClick={handleCancel}
-              className="writingSubmitBtn"
+              className="writingSubmitBtn yellowBtn"
             />
             <input
               type="submit"
               value="저금통에 넣기"
-              className="writingSubmitBtn"
+              className="writingSubmitBtn greenBtn"
             />
           </div>
         </form>
