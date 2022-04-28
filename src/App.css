@@ -61,6 +61,44 @@ button {
   margin: 10px 0;
 }
 
+/* buttons */
+.greenBtn, .yellowBtn, .blueBtn {
+  margin: 0px 5px;
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.greenBtn{
+  background-color: #48cd6b;
+  border: 1px solid #39b359;
+}
+
+.greenBtn:hover {
+  background-color: #42b962;
+}
+
+.yellowBtn {
+  background-color: #fddb46;
+  border: 1px solid #f2d039;
+}
+
+.yellowBtn:hover {
+  background-color: #fcc631;
+}
+
+.blueBtn {
+  background-color: #79bcff;
+  border: 1px solid #84bcf3;
+}
+
+.blueBtn:hover {
+  background-color: #378ee5;
+}
+
+
 /* writing */
 .writingDiv {
   display: flex;
