@@ -67,6 +67,9 @@ function Writing(props) {
           <span id="appTitle">해피 저금통</span>
         </div>
       </div>
+      <p>
+        작성된 내용은 내년부터 확인 가능하며, 수정 및 삭제가 불가능합니다 :)
+      </p>
       {/* 작성 */}
       <div className="writingDiv">
         <form id="writingForm" onSubmit={handleSubmit}>
