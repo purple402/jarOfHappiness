@@ -49,6 +49,7 @@ function Main(props) {
             <span>
               안녕하세요, {user.displayName}님! 오늘의 행복을 기록해 봐요!
             </span>
+            <span id="userName" style={{color: "yellow", backgroundColor: "yellow"}}>{user.displayName}</span>
           </div>
           <div id="userButtons">
             <button id="writeBtn" className="greenBtn" onClick={handleWriteBtn}>
