@@ -13,6 +13,9 @@
 
 .Login input[type="submit"],
 .Login input[type="button"] {
-  height: 30px;
-  width: 100%;
+  height: 35px;
+}
+
+.signup {
+  margin-top: 10px;
 }
