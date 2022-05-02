@@ -19,6 +19,7 @@
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  z-index: 3;
 }
 
 #modalCloseBtn {
@@ -38,19 +39,49 @@
 .modalTitle {
   font-size: 20px;
   font-weight: 600;
-  margin: 10px 0;
+  margin: 10px 0 20px 0;
 }
 
 .modalFormDiv {
   margin: 8px;
   display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .modalFormDiv label {
   width: 100px;
-  
 }
 
 .modalFormDiv input {
   width: 100%;
+  height: 22px;
+  font-size: 15px;
+}
+
+.modalBtnDiv {
+  margin-top: 20px;
+}
+
+.modalBtnDiv input {
+  padding: 7px 25px 6px;
+}
+
+/* UpdateProfile */
+
+#deleteBtn {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  background-color:rgba(0, 0, 0, 0.2);
+  border-radius: 100%;
+  border: none;
+  width: 17px;
+  height: 17px;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -14,7 +14,7 @@ function Signup(props) {
   return (
     <div className="Signup">
       <div className="modalTitle">
-        <span >회원가입</span>
+        <span>회원가입</span>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="modalFormDiv">
@@ -29,12 +29,15 @@ function Signup(props) {
           <label htmlFor="displayName">별명</label>
           <input id="displayName" name="displayName" required />
         </div>
-        <input type="submit" value="회원가입하기" />
-        <input
-          type="button"
-          value="취소하기"
-          onClick={() => props.finishSignup(null)}
-        />
+        <div className="modalBtnDiv">
+          <input
+            type="button"
+            value="취소"
+            className="yellowBtn"
+            onClick={() => props.finishSignup(null)}
+          />
+          <input type="submit" className="greenBtn" value="회원가입" />
+        </div>
       </form>
     </div>
   );

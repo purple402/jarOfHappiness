@@ -7,7 +7,7 @@ function UpdateProfile(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if(displayName !== user.displayName) {
+    if (displayName !== user.displayName) {
       await updateUserDisplayName(displayName);
     }
     props.finishUpdateProfile();
@@ -16,9 +16,13 @@ function UpdateProfile(props) {
   function handleDisplayName(e) {
     setDisplayName(e.target.value);
   }
+  
+  function deleteDisplayName(e) {
+    e.target.previousSibling.value = '';
+  }
 
   function closeModal() {
-    props.finishUpdateProfile()
+    props.finishUpdateProfile();
   }
 
   return (
@@ -27,7 +31,7 @@ function UpdateProfile(props) {
         <span>프로필 수정</span>
       </div>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="modalFormDiv">
           <label htmlFor="id">이메일</label>
           <input
             type="email"
@@ -38,7 +42,7 @@ function UpdateProfile(props) {
             disabled
           />
         </div>
-        <div>
+        <div className="modalFormDiv">
           <label htmlFor="displayName">별명</label>
           <input
             id="displayName"
@@ -46,10 +50,19 @@ function UpdateProfile(props) {
             value={displayName || undefined}
             onChange={handleDisplayName}
             placeholder={displayName === null ? "별명이 없습니다" : ""}
+            required
           />
+          <input type="button" value="✖" id="deleteBtn" onClick={(e) => deleteDisplayName(e)} />
         </div>
-        <input type="submit" value="적용" />
-        <input type="button" value="취소" onClick={() => closeModal()}/>
+        <div className="modalBtnDiv">
+          <input
+            type="button"
+            value="취소"
+            className="yellowBtn"
+            onClick={() => closeModal()}
+          />
+          <input type="submit" className="greenBtn" value="적용" />
+        </div>
       </form>
     </div>
   );
