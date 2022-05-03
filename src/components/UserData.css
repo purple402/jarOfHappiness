@@ -8,6 +8,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 10px 0;
+    align-items: center;
 }
 
 #thisYear {
@@ -15,17 +16,21 @@
     font-weight: 600;
 }
 
-#lastYear, #nextYear {
-    cursor: pointer;
-}
-
 .UserData #number {
     text-align: center;
 }
 
+.yearBtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
 /* list */
 .container {
-    margin: 6px 0;
+    margin: 8px 0;
+    background-color: rgba(255, 255, 255, 0.912);
 }
 
 .contents {
