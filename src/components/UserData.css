@@ -62,3 +62,26 @@
 .createdAt {
     font-size: 17px;
 }
+
+@media (max-width: 730px) {
+    #thisYear {
+        font-size: 20px;
+    }
+
+    .yearBtn {
+        font-size: 14px;
+    }
+
+    .UserData #number {
+        font-size: 14px;
+    }
+
+    /* list */
+    #iconEmoji {
+        font-size: 16px;
+    }
+
+    .createdAt {
+        font-size: 15px;
+    };
+}

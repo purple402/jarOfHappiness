@@ -203,3 +203,92 @@ button {
 .emojiPickerContainer.display {
   display: flex;
 }
+
+
+@media (max-width: 730px) {
+  .Main, .Writing {
+    padding: 0 30px;
+  }
+
+  /* title */
+  .titleDiv {
+    margin-top: 30px;
+  }
+
+  .title span {
+    font-size: 25px;
+  }
+
+  .titleDiv p {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .title #emoji {
+    font-size: 20px;
+  }
+
+  /* user */
+  #userGreeting {
+    margin: 15px 0px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  #userNameHighlight {
+    left: 84px;
+  }
+
+  /* buttons */
+  .greenBtn, .yellowBtn, .blueBtn {
+    margin: 0 2px;
+    padding: 6px 11px;
+    font-size: 14px;
+  }
+
+  /* writing */
+  .Writing p {
+    text-align: center;
+  }
+
+  .writingDiv textarea {
+    font-size: 14px;
+  }
+
+  .writingSetting {
+    margin-bottom: 20px;
+  }
+
+  .writingDetail label {
+    font-size: 15px;
+    margin-bottom: 3px;
+  }
+
+  #dateInput {
+    font-size: 14px;
+    padding: 5px 5px 1px 5px;
+  }
+
+  .emojiPickerContainer {
+    top: 330px;
+    right: 5px;
+  }
+}
+
+@media (max-width: 530px) {
+  .writingDetail {
+    padding: 0 10px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  #emojiBtn {
+    font-size: 16px;
+    padding: 1px;
+    margin-top: 5px;
+  }
+
+  #userNameHighlight {
+    left: 101px;
+  }
+}
