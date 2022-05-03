@@ -34,8 +34,7 @@ function Main(props) {
           <span id="appTitle">해피 저금통</span>
         </div>
         <p id="titleInfo">
-          기쁜 일이나 즐거운 일을 적어 넣어주세요. 한 해 동안 모아둔 행복한
-          순간을 연말에 개봉해 꺼내보며 한 해의 기쁨을 떠올려봐요.
+          기쁜 일이나 즐거운 일을 적어 해피 저금통에 넣어주세요.<br/>연말에 개봉해 꺼내보며 한 해 동안 행복했던 순간들을 떠올려봐요.
         </p>
       </div>
       {user === null ? (
@@ -46,10 +45,10 @@ function Main(props) {
       ) : (
         <div className="user">
           <div id="userGreeting">
-            <span>
+            <span id="userName">
               안녕하세요, {user.displayName}님! 오늘의 행복을 기록해 봐요!
             </span>
-            <span id="userName" style={{color: "yellow", backgroundColor: "yellow"}}>{user.displayName}</span>
+            <span id="userNameHighlight" style={{color: "yellow", backgroundColor: "yellow"}}>{user.displayName}</span>
           </div>
           <div id="userButtons">
             <button id="writeBtn" className="greenBtn" onClick={handleWriteBtn}>
