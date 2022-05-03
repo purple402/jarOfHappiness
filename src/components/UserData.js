@@ -4,9 +4,9 @@ import "./UserData.css";
 
 function UserData() {
   const informRef = useRef(null);
-  const [list, setList] = useState([]);
   const thisYear = new Date().getFullYear();
   const [year, setYear] = useState(thisYear);
+  const [list, setList] = useState([]);
   const [lastYearCount, setLastYearCount] = useState(null);
 
   const checkExposeContent = () => {
@@ -29,16 +29,21 @@ function UserData() {
       const openContent = checkExposeContent();
 
       if (length === 0) {
+        // 저장된 행복 없는 경우
         informRef.current.innerHTML = `첫 번째 행복을 적어보세요!`;
       } else {
-        if (thisYear === year) {
-          informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요.<br/><br/>작성 내용은 내년에 확인할 수 있습니다.`;
+        // 저장된 행복 있는 경우 내용 공개 여부 확인
+          if (!openContent) {
+          informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요.<br/><br/>작성 내용은 연말에 확인할 수 있습니다.`;
         } else {
           informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요.`;
         }
       }
-      createList(data);
 
+      // 행목 목록 만들기
+      createList(data, openContent);
+
+      // 작년 행복 개수 확인
       const lastYear = await countHappiness((year - 1).toString());
       setLastYearCount(lastYear);
     }
