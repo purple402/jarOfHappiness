@@ -2,31 +2,32 @@ import React, { useEffect, useRef, useState } from "react";
 import { createHappiness } from "../firebase";
 import { EmojiPicker } from "../components";
 
+function getToday() {
+  // 오늘 날짜 가져오기
+  const today = new Date();
+  let dateValue = new Date(today);
+
+  // 새벽 3시에 날짜 바뀜
+  let hours = today.getHours();
+  if (hours < 3) {
+    dateValue.setDate(today.getDate() - 1);
+  }
+
+  let year = dateValue.getFullYear();
+  let month = dateValue.getMonth() + 1;
+  let date = dateValue.getDate();
+
+  // 날짜 형식으로 반환
+  return `${year}-${month < 10 ? "0" + month : month}-${
+    date < 10 ? "0" + date : date
+  }`;
+}
+
 function Writing(props) {
   const dateRef = useRef(null);
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const [displayEmojiPicker, setDisplayEmojiPicker] = useState(false);
 
-  function getToday() {
-    // 오늘 날짜 가져오기
-    const today = new Date();
-    let dateValue = new Date(today);
-
-    // 새벽 3시에 날짜 바뀜
-    let hours = today.getHours();
-    if (hours < 3) {
-      dateValue.setDate(today.getDate() - 1);
-    }
-
-    let year = dateValue.getFullYear();
-    let month = dateValue.getMonth() + 1;
-    let date = dateValue.getDate();
-
-    // 날짜 형식으로 반환
-    return `${year}-${month < 10 ? "0" + month : month}-${
-      date < 10 ? "0" + date : date
-    }`;
-  }
 
   useEffect(() => {
     // 올해 1월1일부터 오늘까지만 입력 가능
