@@ -78,6 +78,7 @@ function UserData() {
       <div className="selectYearDiv">
         <button
           id="lastYear"
+          className="yearBtn"
           onClick={() => setYear(year - 1)}
           disabled={lastYearCount === 0 && true}
         >
@@ -86,6 +87,7 @@ function UserData() {
         <span id="thisYear">{year}년</span>
         <button
           id="nextYear"
+          className="yearBtn"
           onClick={() => setYear(year + 1)}
           disabled={year === thisYear && true}
         >
