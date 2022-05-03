@@ -9,9 +9,24 @@ function UserData() {
   const [year, setYear] = useState(thisYear);
   const [lastYearCount, setLastYearCount] = useState(null);
 
+  const checkExposeContent = () => {
+    // 내용 공개 여부 확인
+    // 12월부터 그 해에 쓴 글 확인 가능
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    if (thisYear !== year) {
+      return true;
+    } else if (month === 12) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   useEffect(() => {
     async function fetchData() {
       const { data, length } = await getHappiness(year.toString());
+      const openContent = checkExposeContent();
 
       if (length === 0) {
         informRef.current.innerHTML = `첫 번째 행복을 적어보세요!`;
@@ -30,7 +45,7 @@ function UserData() {
     fetchData();
   }, [year]);
 
-  const createList = (data) => {
+  const createList = (data, openContent) => {
     let i = 0;
     let createdList = [];
     while (i < data.length) {
@@ -42,9 +57,13 @@ function UserData() {
               <span id="iconEmoji">{currentData.emoji || "📌"}</span>
             </div>
             <div className="data">
-                <span className="createdAt">{currentData.date}</span>
-                {thisYear === year || (<p className="textValue" style={{ whiteSpace: "pre-line" }}> {currentData.text}
-              </p>)}
+              <span className="createdAt">{currentData.date}</span>
+              {!openContent || (
+                <p className="textValue" style={{ whiteSpace: "pre-line" }}>
+                  {" "}
+                  {currentData.text}
+                </p>
+              )}
             </div>
           </div>
         </div>
