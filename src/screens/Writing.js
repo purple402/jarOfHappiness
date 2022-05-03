@@ -2,6 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { createHappiness } from "../firebase";
 import { EmojiPicker } from "../components";
 
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return { width, height };
+}
+
 function getToday() {
   // 오늘 날짜 가져오기
   const today = new Date();
@@ -28,6 +33,9 @@ function Writing(props) {
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const [displayEmojiPicker, setDisplayEmojiPicker] = useState(false);
 
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
 
   useEffect(() => {
     // 올해 1월1일부터 오늘까지만 입력 가능
@@ -35,6 +43,13 @@ function Writing(props) {
     dateRef.current.value = today;
     dateRef.current.max = today;
     dateRef.current.min = `${today.substring(0, 4)}-01-01`;
+
+    // 화면 width 확인
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
   async function handleSubmit(e) {
@@ -68,9 +83,15 @@ function Writing(props) {
           <span id="appTitle">해피 저금통</span>
         </div>
       </div>
-      <p>
-        작성된 내용은 내년부터 확인 가능하며, 수정 및 삭제가 불가능합니다 :)
-      </p>
+      {window.innerWidth > 530 ? (
+        <p>작성된 내용은 연말부터 확인 가능하며, 수정 및 삭제가 불가능합니다 {":)"}</p>
+      ) : (
+        <p>
+          작성된 내용은 연말부터 확인 가능하며,
+          <br />
+          수정 및 삭제가 불가능합니다 {":)"}
+        </p>
+      )}
       {/* 작성 */}
       <div className="writingDiv">
         <form id="writingForm" onSubmit={handleSubmit}>
