@@ -55,12 +55,17 @@ function Main(props) {
               작성하기
             </button>
             <button
-              id="updateProfileBtn" className="yellowBtn"
+              id="updateProfileBtn"
+              className="yellowBtn"
               onClick={() => setUpdateProfile(true)}
             >
               정보수정하기
             </button>
-            <button id="logoutBtn" className="blueBtn" onClick={handleLogoutBtn}>
+            <button
+              id="logoutBtn"
+              className="blueBtn"
+              onClick={handleLogoutBtn}
+            >
               로그아웃하기
             </button>
           </div>
