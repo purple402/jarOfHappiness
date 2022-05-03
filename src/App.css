@@ -48,6 +48,8 @@
 
 .title #emoji {
   margin-right: 10px;
+  margin-bottom: 5px;
+  font-size: 25px;
 }
 
 input[type="submit"]:hover,
@@ -56,6 +58,7 @@ button {
   cursor: pointer;
 }
 
+/* user */
 .user {
   width: 100%;
   display: flex;
@@ -142,7 +145,7 @@ button {
   padding: 15px;
   border: 1px solid rgba(128, 128, 128, 0.253);
   border-radius: 10px;
-  
+  box-sizing: border-box;
 }
 
 .writingDiv textarea:focus {
@@ -165,6 +168,7 @@ button {
   padding: 0 20px;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .writingDetail label {

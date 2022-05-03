@@ -45,6 +45,8 @@
     padding: 0 3px;
     margin-top: 3px;
     margin-right: 5px;
+    display: flex;
+    justify-content: center;
 }
 
 #iconEmoji {
