@@ -25,7 +25,9 @@ function UserData() {
 
   useEffect(() => {
     async function fetchData() {
+      // 저장된 행복 개수 확인
       const { data, length } = await getHappiness(year.toString());
+      // 내용 공개 여부 확인
       const openContent = checkExposeContent();
 
       if (length === 0) {
@@ -34,7 +36,7 @@ function UserData() {
       } else {
         // 저장된 행복 있는 경우 내용 공개 여부 확인
           if (!openContent) {
-          informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요.<br/><br/>작성 내용은 연말에 확인할 수 있습니다.`;
+          informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요.<br/><br/>작성된 내용은 연말에 확인할 수 있습니다.`;
         } else {
           informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요.`;
         }
