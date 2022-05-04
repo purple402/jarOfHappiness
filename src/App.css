@@ -126,6 +126,14 @@ button {
   background-color: #378ee5;
 }
 
+.greenBtn:disabled {
+  background-color:rgba(128, 128, 128, 0.548);
+  border-color:rgba(128, 128, 128, 0.678);
+}
+
+.greenBtn:disabled:hover {
+  background-color: rgba(128, 128, 128, 0.766);
+}
 
 /* writing */
 .writingDiv {
