@@ -1,0 +1,22 @@
+.Message {
+    width: 100%;
+    text-align: right;
+    box-sizing: border-box;
+    padding-right: 7px;
+}
+
+.Message span {
+    font-size: 12px;
+}
+
+.greenMessage {
+    color: green;
+}
+
+.orangeMessage {
+    color: red;
+}
+
+.grayMessage {
+    color: gray;
+}

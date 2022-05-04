@@ -5,5 +5,6 @@ import UpdateProfile from "./UpdateProfile.js";
 import UserData from "./UserData.js";
 import Alert from "./Alert.js";
 import EmojiPicker from "./EmojiPicker.js";
+import Message from "./Message.js";
 
-export { Login, Modal, Signup, UpdateProfile, UserData, Alert, EmojiPicker };
+export { Login, Modal, Signup, UpdateProfile, UserData, Alert, EmojiPicker, Message };
