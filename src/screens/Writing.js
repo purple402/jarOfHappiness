@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createHappiness } from "../firebase";
-import { EmojiPicker } from "../components";
+import { EmojiPicker, Alert } from "../components";
 
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
@@ -32,6 +32,7 @@ function Writing(props) {
   const dateRef = useRef(null);
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const [displayEmojiPicker, setDisplayEmojiPicker] = useState(false);
+  const [alert, setAlert] = useState(null);
 
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
@@ -60,9 +61,11 @@ function Writing(props) {
 
     // 문자열 마지막 공백과 개행문자 제거
     let str = text.replace(/\n\s*$/, "");
+
+    setAlert("writing-loading");
     // firebase에 자료 저장
     await createHappiness({ text: str, emoji, date });
-
+    setAlert(null);
     // 메인 스크린으로 나감
     props.finishWriting();
   }
@@ -84,7 +87,10 @@ function Writing(props) {
         </div>
       </div>
       {window.innerWidth > 530 ? (
-        <p>작성된 내용은 연말부터 확인 가능하며, 수정 및 삭제가 불가능합니다 {":)"}</p>
+        <p>
+          작성된 내용은 연말부터 확인 가능하며, 수정 및 삭제가 불가능합니다{" "}
+          {":)"}
+        </p>
       ) : (
         <p>
           작성된 내용은 연말부터 확인 가능하며,
@@ -133,6 +139,7 @@ function Writing(props) {
           </div>
         </form>
       </div>
+      {alert && <Alert code={alert} finishAlert={(alert) => setAlert(alert)} />}
     </div>
   );
 }

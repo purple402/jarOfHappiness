@@ -1,24 +1,28 @@
 import React, { useState } from "react";
 import { getCurrentUser, updateUserDisplayName } from "../firebase";
+import { Alert } from "../components";
 
 function UpdateProfile(props) {
   const user = getCurrentUser();
   const [displayName, setDisplayName] = useState(user.displayName);
+  const [alert, setAlert] = useState(null);
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setAlert("profileUpdate-loading");
     if (displayName !== user.displayName) {
       await updateUserDisplayName(displayName);
     }
+    setAlert(null)
     props.finishUpdateProfile();
   }
 
   function handleDisplayName(e) {
     setDisplayName(e.target.value);
   }
-  
+
   function deleteDisplayName(e) {
-    e.target.previousSibling.value = '';
+    e.target.previousSibling.value = "";
   }
 
   function closeModal() {
@@ -52,7 +56,12 @@ function UpdateProfile(props) {
             placeholder={displayName === null ? "별명이 없습니다" : ""}
             required
           />
-          <input type="button" value="✖" id="deleteBtn" onClick={(e) => deleteDisplayName(e)} />
+          <input
+            type="button"
+            value="✖"
+            id="deleteBtn"
+            onClick={(e) => deleteDisplayName(e)}
+          />
         </div>
         <div className="modalBtnDiv">
           <input
@@ -64,6 +73,9 @@ function UpdateProfile(props) {
           <input type="submit" className="greenBtn" value="적용" />
         </div>
       </form>
+      {alert && (
+        <Alert code={alert} finishAlert={(alert) => setAlert(alert)} />
+      )}
     </div>
   );
 }
