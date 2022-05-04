@@ -59,6 +59,7 @@ async function createUser(email, password, displayName) {
     return auth.currentUser;
   } catch (error) {
     console.log("firebase createUser", error.message);
+    return error.code;
   }
 }
 
