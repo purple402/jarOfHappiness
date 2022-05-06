@@ -33,6 +33,7 @@ function Signup(props) {
       setError(null);
       props.finishSignup(user);
     } else {
+      setError(null);
       setError(user);
     }
   }
