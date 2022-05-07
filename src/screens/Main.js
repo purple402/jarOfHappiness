@@ -78,12 +78,7 @@ function Main(props) {
               <span id="userName">
                 안녕하세요, {user.displayName}님! 오늘의 행복을 기록해 봐요!
               </span>
-              <span
-                id="userNameHighlight"
-                style={{ color: "yellow", backgroundColor: "yellow" }}
-              >
-                {user.displayName}
-              </span>
+              <span id="userNameHighlight">{user.displayName}</span>
             </div>
           ) : (
             <div id="userGreeting">
