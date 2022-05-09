@@ -1,29 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Login, Modal, Signup, UpdateProfile, UserData } from "../components";
 import { logout } from "../firebase";
 
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return { width, height };
-}
-
 function Main(props) {
   const user = props.user;
+  const windowWidth = props.windowWidth;
 
   const [signup, setSignup] = useState(false);
   const [updateProfile, setUpdateProfile] = useState(false);
-
-  const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions()
-  );
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   function handleSubmit(user) {
     props.onChangeUser(user);
@@ -50,7 +34,7 @@ function Main(props) {
           <span id="emoji">🌼</span>
           <span id="appTitle">해피 저금통</span>
         </div>
-        {windowDimensions.width > 530 ? (
+        {windowWidth > 530 ? (
           <p id="titleInfo">
             기쁜 일이나 즐거운 일을 적어 해피 저금통에 넣어주세요.
             <br />
@@ -73,7 +57,7 @@ function Main(props) {
         />
       ) : (
         <div className="user">
-          {windowDimensions.width > 530 ? (
+          {windowWidth > 530 ? (
             <div id="userGreeting">
               <span id="userName">
                 안녕하세요, {user.displayName}님! 오늘의 행복을 기록해 봐요!
