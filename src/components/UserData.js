@@ -79,7 +79,7 @@ function UserData() {
     }
     setList(createdList);
   };
-  
+
   return (
     <div className="UserData">
       <div className="selectYearDiv">
@@ -89,7 +89,7 @@ function UserData() {
           onClick={() => setYear(year - 1)}
           disabled={lastYearCount === 0 && true}
         >
-          ◀ {(year-1).toString().slice(2,4)}
+          ◀ {(year - 1).toString().slice(2, 4)}
         </button>
         <span id="thisYear">{year}년</span>
         <button
@@ -98,7 +98,7 @@ function UserData() {
           onClick={() => setYear(year + 1)}
           disabled={year === thisYear && true}
         >
-          {(year+1).toString().slice(2,4)} ▶
+          {(year + 1).toString().slice(2, 4)} ▶
         </button>
       </div>
       <p id="number" ref={informRef}></p>
