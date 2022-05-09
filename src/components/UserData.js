@@ -9,21 +9,21 @@ function UserData() {
   const [list, setList] = useState([]);
   const [lastYearCount, setLastYearCount] = useState(null);
 
-  const checkExposeContent = () => {
-    // 내용 공개 여부 확인
-    // 12월부터 그 해에 쓴 글 확인 가능
-    const today = new Date();
-    const month = today.getMonth() + 1;
-    if (thisYear !== year) {
-      return true;
-    } else if (month === 12) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   useEffect(() => {
+    function checkExposeContent() {
+      // 내용 공개 여부 확인
+      // 12월부터 그 해에 쓴 글 확인 가능
+      const today = new Date();
+      const month = today.getMonth() + 1;
+      if (thisYear !== year) {
+        return true;
+      } else if (month === 12) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     async function fetchData() {
       // 저장된 행복 개수 확인
       const { data, length } = await getHappiness(year.toString());
@@ -35,7 +35,7 @@ function UserData() {
         informRef.current.innerHTML = `첫 번째 행복을 적어보세요!`;
       } else {
         // 저장된 행복 있는 경우 내용 공개 여부 확인
-          if (!openContent) {
+        if (!openContent) {
           informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요.<br/><br/>작성된 내용은 연말에 확인할 수 있습니다.`;
         } else {
           informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요.`;
@@ -50,7 +50,7 @@ function UserData() {
       setLastYearCount(lastYear);
     }
     fetchData();
-  }, [year]);
+  }, [year, thisYear]);
 
   const createList = (data, openContent) => {
     let i = 0;
