@@ -8,6 +8,8 @@ function getWindowDimensions() {
 }
 
 function Main(props) {
+  const user = props.user;
+
   const [signup, setSignup] = useState(false);
   const [updateProfile, setUpdateProfile] = useState(false);
 
@@ -22,8 +24,6 @@ function Main(props) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  let user = props.user;
 
   function handleSubmit(user) {
     props.onChangeUser(user);
