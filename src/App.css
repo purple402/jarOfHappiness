@@ -4,6 +4,10 @@
   src: url("./fonts/Cafe24SsurroundAir.ttf");
 }
 
+body {
+  background-color: #f4f8ff;
+}
+
 .App, .App input, .App button {
   font-family: "Cafe24SsurroundAir";
 }
@@ -11,8 +15,6 @@
 .App {
   display: flex;
   justify-content: center;
-  background-color: #f4f8ff;
-  height: 100vh;
 }
 
 .Main, .Writing {
