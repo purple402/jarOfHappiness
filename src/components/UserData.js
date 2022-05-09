@@ -79,7 +79,7 @@ function UserData() {
     }
     setList(createdList);
   };
-
+  
   return (
     <div className="UserData">
       <div className="selectYearDiv">
