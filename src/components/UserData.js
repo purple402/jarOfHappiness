@@ -46,8 +46,8 @@ function UserData() {
       createList(data, openContent);
 
       // 작년 행복 개수 확인
-      const lastYear = await countHappiness((year - 1).toString());
-      setLastYearCount(lastYear);
+      const lastYearHappiness = await countHappiness((year - 1).toString());
+      setLastYearCount(lastYearHappiness);
     }
     fetchData();
   }, [year, thisYear]);
