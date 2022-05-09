@@ -50,7 +50,7 @@ function Main(props) {
           <span id="emoji">🌼</span>
           <span id="appTitle">해피 저금통</span>
         </div>
-        {window.innerWidth > 530 ? (
+        {windowDimensions.width > 530 ? (
           <p id="titleInfo">
             기쁜 일이나 즐거운 일을 적어 해피 저금통에 넣어주세요.
             <br />
@@ -73,7 +73,7 @@ function Main(props) {
         />
       ) : (
         <div className="user">
-          {window.innerWidth > 530 ? (
+          {windowDimensions.width > 530 ? (
             <div id="userGreeting">
               <span id="userName">
                 안녕하세요, {user.displayName}님! 오늘의 행복을 기록해 봐요!
