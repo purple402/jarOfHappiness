@@ -81,18 +81,15 @@ function Main(props) {
               <span id="userNameHighlight">{user.displayName}</span>
             </div>
           ) : (
-            <div id="userGreeting">
-              <span id="userName">
-                안녕하세요, {user.displayName}님! <br />
-                오늘의 행복을 기록해 봐요!
-              </span>
-              <span
-                id="userNameHighlight"
-                style={{ color: "yellow", backgroundColor: "yellow" }}
-              >
+            <p id="userGreeting">
+              안녕하세요,{" "}
+              <span style={{ backgroundColor: "yellow" }}>
                 {user.displayName}
               </span>
-            </div>
+              님!
+              <br />
+              오늘의 행복을 기록해 봐요!
+            </p>
           )}
           <div id="userButtons">
             <button id="writeBtn" className="greenBtn" onClick={handleWriteBtn}>
