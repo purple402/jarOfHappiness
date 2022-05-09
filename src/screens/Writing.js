@@ -39,10 +39,11 @@ function Writing(props) {
   );
 
   useEffect(() => {
-    // 올해 1월1일부터 오늘까지만 입력 가능
+    // 날짜 입력 기본값을 오늘로 한다
     const today = getToday();
     dateRef.current.value = today;
     dateRef.current.max = today;
+    // 올해 1월1일부터 오늘까지만 입력 가능
     dateRef.current.min = `${today.substring(0, 4)}-01-01`;
 
     // 화면 width 확인
