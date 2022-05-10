@@ -30,7 +30,7 @@ function Writing(props) {
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const [displayEmojiPicker, setDisplayEmojiPicker] = useState(false);
   const [alert, setAlert] = useState(null);
-
+  
   useEffect(() => {
     // 날짜 입력 기본값을 오늘로 한다
     const today = getToday();
@@ -42,8 +42,8 @@ function Writing(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const text = e.target[0].value;
-    const date = e.target[1].value;
+    const text = e.target["text"].value;
+    const date = e.target["date"].value;
     const emoji = chosenEmoji;
 
     // 문자열 마지막 공백과 개행문자 제거
@@ -90,12 +90,19 @@ function Writing(props) {
         <form id="writingForm" onSubmit={handleSubmit}>
           <textarea
             placeholder="간직하고 싶은 행복을 적어주세요"
+            name="text"
             required
           />
           <div className="writingSetting">
             <div className="writingDetail">
               <label htmlFor="date">📆 날짜</label>
-              <input id="dateInput" type="date" ref={dateRef} required />
+              <input
+                id="dateInput"
+                type="date"
+                name="date"
+                ref={dateRef}
+                required
+              />
             </div>
             <div className="writingDetail">
               <label htmlFor="emoji">🌸 아이콘</label>
