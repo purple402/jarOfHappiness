@@ -38,14 +38,14 @@ function Main(props) {
           <p id="titleInfo">
             기쁜 일이나 즐거운 일을 적어 해피 저금통에 넣어주세요.
             <br />
-            연말에 개봉해 꺼내보며 한 해 동안 행복했던 순간들을 떠올려봐요.
+            연말에 개봉해 꺼내 보며 한 해 동안 행복했던 순간들을 떠올려봐요.
           </p>
         ) : (
           <p id="titleInfo">
             기쁜 일이나 즐거운 일을 적어 <br />
             해피 저금통에 넣어주세요.
             <br />
-            연말에 개봉해 꺼내보며 <br />한 해 동안 행복했던 순간들을
+            연말에 개봉해 꺼내 보며 <br />한 해 동안 행복했던 순간들을
             떠올려봐요.
           </p>
         )}
@@ -77,14 +77,14 @@ function Main(props) {
           )}
           <div id="userButtons">
             <button id="writeBtn" className="greenBtn" onClick={handleWriteBtn}>
-              작성하기
+              행복 작성하기
             </button>
             <button
               id="updateProfileBtn"
               className="yellowBtn"
               onClick={() => setUpdateProfile(true)}
             >
-              정보수정하기
+              정보 수정하기
             </button>
             <button
               id="logoutBtn"

@@ -75,12 +75,12 @@ function Writing(props) {
       </div>
       {windowWidth > 530 ? (
         <p>
-          작성된 내용은 연말부터 확인 가능하며, 수정 및 삭제가 불가능합니다{" "}
-          {":)"}
+          작성된 내용은 연말부터 확인할 수 있으며, 수정 및 삭제가 불가능합니다
+          {" :)"}
         </p>
       ) : (
         <p>
-          작성된 내용은 연말부터 확인 가능하며,
+          작성된 내용은 연말부터 확인할 수 있으며,
           <br />
           수정 및 삭제가 불가능합니다 {":)"}
         </p>
@@ -88,7 +88,10 @@ function Writing(props) {
       {/* 작성 */}
       <div className="writingDiv">
         <form id="writingForm" onSubmit={handleSubmit}>
-          <textarea placeholder="간직하고싶은 행복을 적어주세요" required />
+          <textarea
+            placeholder="간직하고 싶은 행복을 적어주세요"
+            required
+          />
           <div className="writingSetting">
             <div className="writingDetail">
               <label htmlFor="date">📆 날짜</label>
