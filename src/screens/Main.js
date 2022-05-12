@@ -75,25 +75,61 @@ function Main(props) {
               오늘은 어떤 행복한 일이 있었나요?
             </p>
           )}
-          <div id="userButtons">
-            <button id="writeBtn" className="greenBtn" onClick={handleWriteBtn}>
-              행복 작성하기
-            </button>
-            <button
-              id="updateProfileBtn"
-              className="yellowBtn"
-              onClick={() => setUpdateProfile(true)}
-            >
-              정보 수정하기
-            </button>
-            <button
-              id="logoutBtn"
-              className="blueBtn"
-              onClick={handleLogoutBtn}
-            >
-              로그아웃하기
-            </button>
-          </div>
+          {windowWidth > 530 ? (
+            <div id="userButtons">
+              <button
+                id="writeBtn"
+                className="greenBtn"
+                onClick={handleWriteBtn}
+              >
+                행복 작성하기
+              </button>
+              <button
+                id="updateProfileBtn"
+                className="yellowBtn"
+                onClick={() => setUpdateProfile(true)}
+              >
+                정보 수정하기
+              </button>
+              <button
+                id="logoutBtn"
+                className="blueBtn"
+                onClick={handleLogoutBtn}
+              >
+                로그아웃 하기
+              </button>
+            </div>
+          ) : (
+            <div id="userButtons">
+              <button
+                id="writeBtn"
+                className="greenBtn"
+                onClick={handleWriteBtn}
+              >
+                행복
+                <br />
+                <strong>작성하기</strong>
+              </button>
+              <button
+                id="updateProfileBtn"
+                className="yellowBtn"
+                onClick={() => setUpdateProfile(true)}
+              >
+                정보
+                <br />
+                <strong>수정하기</strong>
+              </button>
+              <button
+                id="logoutBtn"
+                className="blueBtn"
+                onClick={handleLogoutBtn}
+              >
+                로그아웃
+                <br />
+                <strong>하기</strong>
+              </button>
+            </div>
+          )}
         </div>
       )}
       {signup && (
