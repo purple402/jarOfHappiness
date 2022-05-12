@@ -43,7 +43,8 @@ async function logout() {
   try {
     await signOut(auth);
   } catch (error) {
-    console.log("firebase logout", error.message);
+    console.log("firebase logout", error.code);
+    return error.code;
   }
 }
 
@@ -58,7 +59,7 @@ async function createUser(email, password, displayName) {
     // 생성 후 로그인된 계정 반환
     return auth.currentUser;
   } catch (error) {
-    console.log("firebase createUser", error.message);
+    console.log("firebase createUser", error.code);
     return error.code;
   }
 }
