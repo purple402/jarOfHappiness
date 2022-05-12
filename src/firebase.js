@@ -55,6 +55,7 @@ async function createUser(email, password, displayName) {
     await updateUserDisplayName(displayName);
     // 사용자별 문서 생성
     await createUserDoc(auth.currentUser);
+    // 생성 후 로그인된 계정 반환
     return auth.currentUser;
   } catch (error) {
     console.log("firebase createUser", error.message);
@@ -67,6 +68,7 @@ async function updateUserDisplayName(displayName) {
 }
 
 async function createUserDoc(user) {
+  // 사용자 문서 생성
   try {
     const newUserColRef = collection(DB, "Happiness");
     const id = user.uid;
@@ -90,6 +92,7 @@ function getCurrentUser() {
 }
 
 async function createHappiness({ text, emoji, date }) {
+  // 작성한 행복 저장하기
   const year = date.substring(0, 4);
   const uid = auth.currentUser.uid;
   const yearRef = await addDoc(collection(DB, "Happiness", uid, year), {});
@@ -106,6 +109,7 @@ async function getHappiness(year) {
   querySnapshot.forEach((doc) => {
     data.push(doc.data());
   });
+  // 작성한 날짜 내림차순 정렬
   data.sort((a, b) => {
     return b.createdAt - a.createdAt;
   });
@@ -114,6 +118,7 @@ async function getHappiness(year) {
 }
 
 async function countHappiness(year) {
+  // 입력받은 해에 작성된 개수 확인
   const uid = auth.currentUser.uid;
   const yearRef = collection(DB, "Happiness", uid, year);
   const querySnapshot = await getDocs(yearRef);
