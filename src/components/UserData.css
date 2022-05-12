@@ -19,6 +19,7 @@
 
 .UserData #number {
     text-align: center;
+    margin: 30px 0;
 }
 
 .yearBtn {
@@ -78,15 +79,15 @@
     }
 
     .UserData #number {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     /* list */
     .data, .createdAt {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     #iconEmoji {
-        font-size: 16px;
+        font-size: 17px;
     }
 }
