@@ -9,11 +9,11 @@ function UpdateProfile(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setAlert("profileUpdate-loading");
     if (displayName !== user.displayName) {
+      setAlert("profileUpdate-loading");
       await updateUserDisplayName(displayName);
+      setAlert(null)
     }
-    setAlert(null)
     props.finishUpdateProfile();
   }
 
