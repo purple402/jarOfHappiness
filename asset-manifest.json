@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/jarOfHappiness-react/static/css/main.922e8dbd.css",
-    "main.js": "/jarOfHappiness-react/static/js/main.8a00de1b.js",
-    "static/js/787.72941ce5.chunk.js": "/jarOfHappiness-react/static/js/787.72941ce5.chunk.js",
-    "static/media/Cafe24SsurroundAir.ttf": "/jarOfHappiness-react/static/media/Cafe24SsurroundAir.2477297bc14b8b2ed082.ttf",
-    "index.html": "/jarOfHappiness-react/index.html",
-    "main.922e8dbd.css.map": "/jarOfHappiness-react/static/css/main.922e8dbd.css.map",
-    "main.8a00de1b.js.map": "/jarOfHappiness-react/static/js/main.8a00de1b.js.map",
-    "787.72941ce5.chunk.js.map": "/jarOfHappiness-react/static/js/787.72941ce5.chunk.js.map"
+    "main.css": "/jarOfHappiness/static/css/main.4f7aa430.css",
+    "main.js": "/jarOfHappiness/static/js/main.ce81f07f.js",
+    "static/js/787.72941ce5.chunk.js": "/jarOfHappiness/static/js/787.72941ce5.chunk.js",
+    "static/media/Cafe24SsurroundAir.ttf": "/jarOfHappiness/static/media/Cafe24SsurroundAir.2477297bc14b8b2ed082.ttf",
+    "index.html": "/jarOfHappiness/index.html",
+    "main.4f7aa430.css.map": "/jarOfHappiness/static/css/main.4f7aa430.css.map",
+    "main.ce81f07f.js.map": "/jarOfHappiness/static/js/main.ce81f07f.js.map",
+    "787.72941ce5.chunk.js.map": "/jarOfHappiness/static/js/787.72941ce5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.922e8dbd.css",
-    "static/js/main.8a00de1b.js"
+    "static/css/main.4f7aa430.css",
+    "static/js/main.ce81f07f.js"
   ]
 }
