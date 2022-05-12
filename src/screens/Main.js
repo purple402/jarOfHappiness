@@ -72,7 +72,7 @@ function Main(props) {
               </span>
               님!
               <br />
-              오늘의 행복을 기록해 봐요!
+              오늘은 어떤 행복한 일이 있었나요?
             </p>
           )}
           <div id="userButtons">
