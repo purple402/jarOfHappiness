@@ -73,7 +73,7 @@ function Signup(props) {
       </div>
       <form onSubmit={handleSubmit}>
         <div className="modalFormDiv">
-          <label htmlFor="id">이메일</label>
+          <label htmlFor="email">이메일</label>
           <input
             type="email"
             id="email"
