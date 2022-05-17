@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./Modal.css";
 
 // 스크롤 막기
+// event.keyCode 값들
 // left: 37, up: 38, right: 39, down: 40,
 // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
 var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
@@ -57,6 +58,20 @@ function Modal(props) {
     // modal 닫히면 다시 스크롤 가능하도록 함
     return () => enableScroll();
   }, []);
+
+  // 다른 방법도 가능함
+  // useEffect(() => {
+  //   document.body.style.cssText = `
+  //     position: fixed; 
+  //     top: -${window.scrollY}px;
+  //     overflow-y: scroll;
+  //     width: 100%;`;
+  //   return () => {
+  //     const scrollY = document.body.style.top;
+  //     document.body.style.cssText = '';
+  //     window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+  //   };
+  // }, []);
 
   function closeModal() {
     props.closeModal();
