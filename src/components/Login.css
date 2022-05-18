@@ -18,4 +18,9 @@
 
 .signup {
   margin-top: 10px;
+  text-align: center;
+}
+
+.signup > .blueBtn {
+  margin: 3px 0 18px 0;
 }

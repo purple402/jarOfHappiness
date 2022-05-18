@@ -144,7 +144,18 @@ function Main(props) {
           />
         </Modal>
       )}
-      {user && <UserData />}
+      {user ? (
+        <UserData />
+      ) : (
+        <a
+          class="info"
+          href="https://www.notion.so/joy-lee/9d49d506adc04cea9c613404ce1f6ef2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          설명서를 참고해주세요!
+        </a>
+      )}
     </div>
   );
 }
