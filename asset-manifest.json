@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/jarOfHappiness/static/css/main.b8d9c3a8.css",
-    "main.js": "/jarOfHappiness/static/js/main.42a11eeb.js",
+    "main.css": "/jarOfHappiness/static/css/main.82b0d3a2.css",
+    "main.js": "/jarOfHappiness/static/js/main.e572a60b.js",
     "static/js/787.72941ce5.chunk.js": "/jarOfHappiness/static/js/787.72941ce5.chunk.js",
     "static/media/Cafe24SsurroundAir.ttf": "/jarOfHappiness/static/media/Cafe24SsurroundAir.2477297bc14b8b2ed082.ttf",
     "index.html": "/jarOfHappiness/index.html",
-    "main.b8d9c3a8.css.map": "/jarOfHappiness/static/css/main.b8d9c3a8.css.map",
-    "main.42a11eeb.js.map": "/jarOfHappiness/static/js/main.42a11eeb.js.map",
+    "main.82b0d3a2.css.map": "/jarOfHappiness/static/css/main.82b0d3a2.css.map",
+    "main.e572a60b.js.map": "/jarOfHappiness/static/js/main.e572a60b.js.map",
     "787.72941ce5.chunk.js.map": "/jarOfHappiness/static/js/787.72941ce5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b8d9c3a8.css",
-    "static/js/main.42a11eeb.js"
+    "static/css/main.82b0d3a2.css",
+    "static/js/main.e572a60b.js"
   ]
 }
