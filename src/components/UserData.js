@@ -26,26 +26,32 @@ function UserData() {
     }
 
     async function fetchData() {
-      // 저장된 행복 개수 확인
+      // localStorage 저장된 자료 확인
       let data = JSON.parse(localStorage.getItem(year.toString()));
-      const count = await countHappiness(year.toString());
       let dataCount = data?.length || 0;
-      // 내용 공개 여부 확인
-      const openContent = checkExposeContent();
+      // firebase의 자료 확인
+      const count = await countHappiness(year.toString());
 
       if (count === 0) {
         // 저장된 행복 없는 경우
+        // (firebase에 없으면 local에도 없다고 생각함)
         informRef.current.innerHTML = `첫 번째 행복을 적어보세요!`;
-      } else if (dataCount === count) {
-        console.log("저장된 데이터와 같음");
-      } else {
-        console.log("저장된 데이터와 다름");
+      } else if (dataCount !== count) {
+        // localStorage 저장본과 firebase 자료 다른 경우
+        // localStorage에 업데이트
         const firebaseData = await getHappiness(year.toString());
-        localStorage.setItem(year.toString(), JSON.stringify(firebaseData.data));
+        localStorage.setItem(
+          year.toString(),
+          JSON.stringify(firebaseData.data)
+        );
         data = JSON.parse(localStorage.getItem(year.toString()));
+      } else {
+        // localStorage 저장본과 firebase 자료 같은 경우
       }
 
-      //내용 공개 여부 확인
+      // 내용 공개 여부 확인
+      const openContent = checkExposeContent();
+
       if (!openContent) {
         informRef.current.innerHTML = `${year}년에는 ${count}개의 행복을 저장했어요.<br/><br/>작성된 내용은 연말에 확인할 수 있습니다.`;
       } else {
