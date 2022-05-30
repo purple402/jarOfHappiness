@@ -148,7 +148,7 @@ function Main(props) {
         <UserData />
       ) : (
         <a
-          class="info"
+          className="info"
           href="https://www.notion.so/joy-lee/9d49d506adc04cea9c613404ce1f6ef2"
           target="_blank"
           rel="noopener noreferrer"
