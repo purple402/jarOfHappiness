@@ -35,14 +35,14 @@ function UserData() {
         // 저장된 행복 없는 경우
         informRef.current.innerHTML = `첫 번째 행복을 적어보세요!`;
       } else {
-        // 저장된 행복 있는 경우 내용 공개 여부 확인
-        if (!openContent) {
-          informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요.<br/><br/>작성된 내용은 연말에 확인할 수 있습니다.`;
-        } else {
-          informRef.current.innerHTML = `${year}년에는 ${length}개의 행복을 저장했어요.`;
-        }
       }
 
+      //내용 공개 여부 확인
+      if (!openContent) {
+        informRef.current.innerHTML = `${year}년에는 ${count}개의 행복을 저장했어요.<br/><br/>작성된 내용은 연말에 확인할 수 있습니다.`;
+      } else {
+        informRef.current.innerHTML = `${year}년에는 ${count}개의 행복을 저장했어요.`;
+      }
       // 행목 목록 만들기
       createList(data, openContent);
 
