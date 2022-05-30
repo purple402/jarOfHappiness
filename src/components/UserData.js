@@ -4,6 +4,7 @@ import "./UserData.css";
 
 function UserData() {
   const informRef = useRef(null);
+  // thisYear는 올해, year는 목록에 나타낼 내용의 년도
   const thisYear = new Date().getFullYear();
   const [year, setYear] = useState(thisYear);
   const [list, setList] = useState([]);
