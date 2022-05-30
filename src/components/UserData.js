@@ -27,14 +27,22 @@ function UserData() {
 
     async function fetchData() {
       // 저장된 행복 개수 확인
-      const { data, length } = await getHappiness(year.toString());
+      let data = JSON.parse(localStorage.getItem(year.toString()));
+      const count = await countHappiness(year.toString());
+      let dataCount = data?.length || 0;
       // 내용 공개 여부 확인
       const openContent = checkExposeContent();
 
-      if (length === 0) {
+      if (count === 0) {
         // 저장된 행복 없는 경우
         informRef.current.innerHTML = `첫 번째 행복을 적어보세요!`;
+      } else if (dataCount === count) {
+        console.log("저장된 데이터와 같음");
       } else {
+        console.log("저장된 데이터와 다름");
+        const firebaseData = await getHappiness(year.toString());
+        localStorage.setItem(year.toString(), JSON.stringify(firebaseData.data));
+        data = JSON.parse(localStorage.getItem(year.toString()));
       }
 
       //내용 공개 여부 확인
