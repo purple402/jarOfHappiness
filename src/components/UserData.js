@@ -29,8 +29,13 @@ function UserData() {
       const yearString = year.toString();
 
       // 작년 행복 개수 먼저 확인
-      const lastYearHappiness = await countHappiness((year - 1).toString());
-      setLastYearCount(lastYearHappiness);
+      if (localStorage.getItem(year - 1)) {
+        const lastYearLocalData = JSON.parse(localStorage.getItem(year - 1));
+        setLastYearCount(lastYearLocalData.length);
+      } else {
+        const lastYearHappiness = await countHappiness((year - 1).toString());
+        setLastYearCount(lastYearHappiness);
+      }
 
       // firebase의 자료 개수 확인
       const count = await countHappiness(yearString);
