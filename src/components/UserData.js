@@ -45,7 +45,7 @@ function UserData() {
         // (firebase에 없으면 local에도 없다고 생각함)
         informRef.current.innerHTML = `첫 번째 행복을 적어보세요!`;
         // 더 이상 data를 확인할 필요가 없다
-        return; 
+        return;
       }
 
       // localStorage 저장된 자료 확인
@@ -55,10 +55,7 @@ function UserData() {
         // localStorage 저장본과 firebase 자료 다른 경우
         // localStorage에 업데이트
         const firebaseData = await getHappiness(yearString);
-        localStorage.setItem(
-          yearString,
-          JSON.stringify(firebaseData.data)
-        );
+        localStorage.setItem(yearString, JSON.stringify(firebaseData.data));
         localData = JSON.parse(localStorage.getItem(yearString));
       } else {
         // localStorage 저장본과 firebase 자료 같은 경우
