@@ -24,7 +24,7 @@ function getToday() {
 }
 
 function Writing(props) {
-  const windowWidth = props.windowWidth;
+  let windowWidth = props.windowWidth;
 
   const dateRef = useRef(null);
   const [chosenEmoji, setChosenEmoji] = useState(null);
@@ -38,6 +38,9 @@ function Writing(props) {
     dateRef.current.max = today;
     // 올해 1월1일부터 오늘까지만 입력 가능
     dateRef.current.min = `${today.substring(0, 4)}-01-01`;
+
+    // Can't perform a React state update on an unmounted component... 에러를 위한 cleanup function
+    return () => windowWidth = 0;
   }, []);
 
   async function handleSubmit(e) {
