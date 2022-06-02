@@ -26,13 +26,14 @@ function UserData() {
 
   useEffect(() => {
     async function fetchData() {
+      const yearString = year.toString();
 
       // 작년 행복 개수 먼저 확인
       const lastYearHappiness = await countHappiness((year - 1).toString());
       setLastYearCount(lastYearHappiness);
 
       // firebase의 자료 개수 확인
-      const count = await countHappiness(year.toString());
+      const count = await countHappiness(yearString);
 
       if (count === 0) {
         // 저장된 행복 없는 경우
@@ -43,17 +44,17 @@ function UserData() {
       }
 
       // localStorage 저장된 자료 확인
-      let localData = JSON.parse(localStorage.getItem(year.toString()));
+      let localData = JSON.parse(localStorage.getItem(yearString));
       const localDataCount = localData?.length || 0;
       if (localDataCount !== count) {
         // localStorage 저장본과 firebase 자료 다른 경우
         // localStorage에 업데이트
-        const firebaseData = await getHappiness(year.toString());
+        const firebaseData = await getHappiness(yearString);
         localStorage.setItem(
-          year.toString(),
+          yearString,
           JSON.stringify(firebaseData.data)
         );
-        localData = JSON.parse(localStorage.getItem(year.toString()));
+        localData = JSON.parse(localStorage.getItem(yearString));
       } else {
         // localStorage 저장본과 firebase 자료 같은 경우
       }
