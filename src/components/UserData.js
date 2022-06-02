@@ -38,7 +38,10 @@ function UserData() {
         // 저장된 행복 없는 경우
         // (firebase에 없으면 local에도 없다고 생각함)
         informRef.current.innerHTML = `첫 번째 행복을 적어보세요!`;
-      } else if (dataCount !== count) {
+        // 더 이상 data를 확인할 필요가 없다
+        return; 
+      }
+
       // localStorage 저장된 자료 확인
       let localData = JSON.parse(localStorage.getItem(year.toString()));
       const localDataCount = localData?.length || 0;
