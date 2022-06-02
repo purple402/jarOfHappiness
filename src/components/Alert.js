@@ -35,6 +35,10 @@ function Alert(props) {
         messageRef.current.innerHTML =
           "행복을 저장하고 있습니다. <br/> 잠시만 기다려 주세요.";
         break;
+      case "auth/network-request-failed":
+        messageRef.current.innerHTML = 
+          "인터넷에 연결되어 있지 않습니다. <br/> 접속상태를 확인해주세요.";
+          break;
       default:
         messageRef.current.innerHTML =
           "오류가 발생했습니다. </br> 잠시 후 다시 시도해주세요.";
