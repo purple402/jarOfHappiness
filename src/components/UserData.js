@@ -10,21 +10,21 @@ function UserData() {
   const [list, setList] = useState([]);
   const [lastYearCount, setLastYearCount] = useState(null);
 
-  useEffect(() => {
-    function checkExposeContent() {
-      // 내용 공개 여부 확인
-      // 12월부터 그 해에 쓴 글 확인 가능
-      const today = new Date();
-      const month = today.getMonth() + 1;
-      if (thisYear !== year) {
-        return true;
-      } else if (month === 12) {
-        return true;
-      } else {
-        return false;
-      }
+  function checkExposeContent() {
+    // 내용 공개 여부 확인
+    // 12월부터 그 해에 쓴 글 확인 가능
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    if (thisYear !== year) {
+      return true;
+    } else if (month === 12) {
+      return true;
+    } else {
+      return false;
     }
+  }
 
+  useEffect(() => {
     async function fetchData() {
       // localStorage 저장된 자료 확인
       let data = JSON.parse(localStorage.getItem(year.toString()));
