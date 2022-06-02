@@ -53,7 +53,7 @@ function UserData() {
           year.toString(),
           JSON.stringify(firebaseData.data)
         );
-        data = JSON.parse(localStorage.getItem(year.toString()));
+        localData = JSON.parse(localStorage.getItem(year.toString()));
       } else {
         // localStorage 저장본과 firebase 자료 같은 경우
       }
@@ -67,7 +67,7 @@ function UserData() {
         informRef.current.innerHTML = `${year}년에는 ${count}개의 행복을 저장했어요.`;
       }
       // 행목 목록 만들기
-      createList(data, openContent);
+      createList(localData, openContent);
     }
     fetchData();
   }, [year, thisYear]);
