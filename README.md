@@ -1,5 +1,9 @@
 # jarOfHappiness
 
+사이트 사용법에 대한 설명은 아래 페이지를 통해 확인하실 수 있습니다.
+
+<a href="https://www.notion.so/joy-lee/9d49d506adc04cea9c613404ce1f6ef2" >🌼해피 저금통 설명서</a>
+
 ## jarOfHappiness를 만든 이유
 
 인터넷에서 해피 저금통에 대해서 보기만 하고
@@ -21,9 +25,3 @@ https://twitter.com/choss_bun/status/948234679747936256?ref_src=twsrc%5Etfw%7Ctw
     -   React
     -   HTML, CSS
     -   firebase
-
----
-
-자세한 설명은 아래 페이지를 통해 확인하실 수 있습니다.
-
-<a href="https://www.notion.so/joy-lee/9d49d506adc04cea9c613404ce1f6ef2" >🌼해피 저금통 설명서</a>
