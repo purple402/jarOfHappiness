@@ -29,6 +29,7 @@ function Main(props) {
 
   return (
     <div className="Main">
+      {/* 헤더 */}
       <div className="titleDiv">
         <div className="title">
           <span id="emoji">🌼</span>
@@ -50,6 +51,8 @@ function Main(props) {
           </p>
         )}
       </div>
+
+      {/* 바디 */}
       {user === null ? (
         <Login
           onSubmit={(user) => handleSubmit(user)}
@@ -100,6 +103,7 @@ function Main(props) {
               </button>
             </div>
           ) : (
+            // 폭이 좁으면 버튼 안에서 줄바꿈
             <div id="userButtons">
               <button
                 id="writeBtn"
@@ -132,11 +136,14 @@ function Main(props) {
           )}
         </div>
       )}
+
+      {/* 회원가입 모달 */}
       {signup && (
         <Modal closeModal={() => setSignup(!signup)}>
           <Signup finishSignup={(user) => finishSignup(user)} />
         </Modal>
       )}
+      {/* 정보수정 모달 */}
       {updateProfile && (
         <Modal closeModal={() => setUpdateProfile(!updateProfile)}>
           <UpdateProfile
@@ -144,6 +151,8 @@ function Main(props) {
           />
         </Modal>
       )}
+
+      {/* 로그인 되어있으면 UserData, 없으면 설명서 안내 */}
       {user ? (
         <UserData />
       ) : (

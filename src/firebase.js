@@ -29,6 +29,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const DB = getFirestore(app);
 
+
 async function login(email, password) {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
@@ -92,10 +93,13 @@ function getCurrentUser() {
   }
 }
 
+// 작성한 행복 저장하기
 async function createHappiness({ text, emoji, date }) {
-  // 작성한 행복 저장하기
+  // 작성 년도와 작성자 확인
   const year = date.substring(0, 4);
   const uid = auth.currentUser.uid;
+
+  // 해당 년도의 콜렉션 없으면 생성, 있으면 무시됨
   const yearRef = await addDoc(collection(DB, "Happiness", uid, year), {});
   const newHappiness = { date, text, emoji, createdAt: Date.now() };
   await setDoc(yearRef, newHappiness);
