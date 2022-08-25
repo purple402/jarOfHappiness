@@ -17,7 +17,7 @@ function getToday() {
   let month = dateValue.getMonth() + 1;
   let date = dateValue.getDate();
 
-  // 날짜 형식으로 반환
+  // YYYY-MM-DD 형식으로 반환
   return `${year}-${month < 10 ? "0" + month : month}-${
     date < 10 ? "0" + date : date
   }`;
