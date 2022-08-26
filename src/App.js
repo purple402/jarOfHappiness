@@ -1,5 +1,5 @@
-import { Main, Writing } from "./screens";
 import React from "react";
+import { Login } from "./screens";
 import { UserProvider } from "./UserContext";
 import { WindowWidthProvider } from "./WindowWidthContext";
 import "./App.css";
@@ -9,6 +9,7 @@ function App() {
     <WindowWidthProvider>
       <UserProvider>
         <div className="App">
+          <Login />
         </div>
       </UserProvider>
     </WindowWidthProvider>
