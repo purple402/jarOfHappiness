@@ -7,7 +7,7 @@ function Login() {
 
   return (
     <div>
-      <Header/>
+      <Header />
       {/* 로그인 */}
       <LoginForm onSignup={() => setSignup(true)} setError={setError} />
       {/* 에러 알람 */}
