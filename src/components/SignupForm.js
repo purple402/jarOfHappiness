@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { createUser } from "../firebase";
-import { Message, Alert } from "../components";
+import { Message, Alert } from ".";
+import { useSetUser } from "../UserContext";
 
-function Signup(props) {
+function SignupForm({finishSignup}) {
   const [passwordMessage, setPasswordMessage] = useState("");
   const [error, setError] = useState(null);
   const [inputs, setInputs] = useState({
@@ -12,6 +13,7 @@ function Signup(props) {
     displayName: "",
   });
   const { email, password, passwordConfirm, displayName } = inputs;
+  const changeUser = useSetUser();
 
   function onChange(e) {
     const { value, name } = e.target;
@@ -31,7 +33,8 @@ function Signup(props) {
     const user = await createUser(email, password, displayName);
     if (typeof user !== "string") {
       setError(null);
-      props.finishSignup(user);
+      changeUser(user);
+      // finishSignup();
     } else {
       setError(null);
       setError(user);
@@ -64,6 +67,10 @@ function Signup(props) {
         );
       }
     }
+  }
+
+  function handleCancelBtn() {
+    finishSignup();
   }
 
   return (
@@ -123,7 +130,7 @@ function Signup(props) {
             type="button"
             value="취소"
             className="yellowBtn"
-            onClick={() => props.finishSignup(null)}
+            onClick={handleCancelBtn}
           />
           <input
             type="submit"
@@ -138,4 +145,4 @@ function Signup(props) {
   );
 }
 
-export default Signup;
+export default SignupForm;
