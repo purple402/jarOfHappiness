@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { getCurrentUser, updateUserDisplayName } from "../firebase";
-import { Alert } from "../components";
+import { Alert } from ".";
 
-function UpdateProfile(props) {
+function UpdateProfileForm(props) {
   const user = getCurrentUser();
   const [displayName, setDisplayName] = useState(user.displayName);
   const [alert, setAlert] = useState(null);
@@ -80,4 +80,4 @@ function UpdateProfile(props) {
   );
 }
 
-export default UpdateProfile;
+export default UpdateProfileForm;
