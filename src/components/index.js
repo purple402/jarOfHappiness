@@ -1,10 +1,21 @@
-import Login from "./Login.js";
+import LoginForm from "./LoginForm.js";
 import Modal from "./Modal.js";
-import Signup from "./Signup.js";
+import SignupForm from "./SignupForm.js";
 import UpdateProfile from "./UpdateProfile.js";
 import UserData from "./UserData.js";
 import Alert from "./Alert.js";
 import EmojiPicker from "./EmojiPicker.js";
 import Message from "./Message.js";
+import Header from "./Header.js";
 
-export { Login, Modal, Signup, UpdateProfile, UserData, Alert, EmojiPicker, Message };
+export {
+  LoginForm,
+  Modal,
+  SignupForm,
+  UpdateProfile,
+  UserData,
+  Alert,
+  EmojiPicker,
+  Message,
+  Header,
+};
