@@ -1,5 +1,5 @@
 import Main from "./Main.js";
-import Writing from "./Writing.js";
+import Write from "./Write.js";
 import Login from "./Login.js";
 
-export { Main, Writing, Login };
+export { Main, Write, Login };

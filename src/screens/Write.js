@@ -23,7 +23,7 @@ function getToday() {
   }`;
 }
 
-function Writing(props) {
+function Write(props) {
   let windowWidth = props.windowWidth;
 
   const dateRef = useRef(null);
@@ -144,4 +144,4 @@ function Writing(props) {
   );
 }
 
-export default Writing;
+export default Write;
