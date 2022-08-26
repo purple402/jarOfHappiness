@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Login, Modal, Signup, UpdateProfile, UserData } from "../components";
 import { logout } from "../firebase";
+import { useUser, useSetUser } from "../UserContext";
+import { useWindowWidth } from "../WindowWidthContext";
 
-function Main(props) {
-  const user = props.user;
-  const windowWidth = props.windowWidth;
+function Main() {
+  const user = useUser();
+  const changeUser = useSetUser();
+  const windowWidth = useWindowWidth();
 
   const [signup, setSignup] = useState(false);
   const [updateProfile, setUpdateProfile] = useState(false);
@@ -20,7 +23,7 @@ function Main(props) {
 
   function finishSignup(user) {
     setSignup(!signup);
-    props.onChangeUser(user);
+    changeUser(null);
   }
 
   function handleWriteBtn() {
