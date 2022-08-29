@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { createHappiness } from "../firebase";
 import { EmojiPicker, Alert } from "../components";
 import { useWindowWidth } from "../WindowWidthContext";
+import { useNavigate } from "react-router-dom";
 
 function getToday() {
   // 오늘 날짜 가져오기
@@ -26,6 +27,7 @@ function getToday() {
 
 function Write() {
   const windowWidth = useWindowWidth();
+  let navigate = useNavigate();
 
   const dateRef = useRef(null);
   const [chosenEmoji, setChosenEmoji] = useState(null);
@@ -56,11 +58,11 @@ function Write() {
     await createHappiness({ text: str, emoji, date });
     setAlert(null);
     // 메인 스크린으로 나감
-    props.finishWriting();
+    navigate("/jarOfHappiness/main");
   }
 
   function handleCancel() {
-    props.finishWriting();
+    navigate("/jarOfHappiness/main");
   }
 
   const handleEmojiBtn = () => {
