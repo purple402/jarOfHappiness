@@ -16,6 +16,7 @@ function Greeting() {
   function handleLogoutBtn() {
     logout();
     changeUser(null);
+    navigate("/jarOfHappiness");
   }
 
   function handleWriteBtn() {
