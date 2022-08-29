@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createHappiness } from "../firebase";
 import { EmojiPicker, Alert } from "../components";
+import { useWindowWidth } from "../WindowWidthContext";
 
 function getToday() {
   // 오늘 날짜 가져오기
@@ -23,8 +24,8 @@ function getToday() {
   }`;
 }
 
-function Write(props) {
-  let windowWidth = props.windowWidth;
+function Write() {
+  const windowWidth = useWindowWidth();
 
   const dateRef = useRef(null);
   const [chosenEmoji, setChosenEmoji] = useState(null);
@@ -39,8 +40,6 @@ function Write(props) {
     // 올해 1월1일부터 오늘까지만 입력 가능
     dateRef.current.min = `${today.substring(0, 4)}-01-01`;
 
-    // Can't perform a React state update on an unmounted component... 에러를 위한 cleanup function
-    return () => windowWidth = 0;
   }, []);
 
   async function handleSubmit(e) {
