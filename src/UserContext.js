@@ -1,11 +1,17 @@
-import React, { useState, createContext, useContext } from 'react';
-// import * as firebase from './firebase';
+import React, { useState, createContext, useContext, useEffect } from "react";
 
 const UserContext = createContext(null);
 const SetUserContext = createContext(null);
 
 export function UserProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const localData = sessionStorage.getItem("user");
+    return localData ? JSON.parse(localData) : null;
+  });
+
+  useEffect(() => {
+    sessionStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
 
   return (
     <UserContext.Provider value={user}>
