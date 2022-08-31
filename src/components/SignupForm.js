@@ -34,7 +34,7 @@ function SignupForm({finishSignup}) {
     if (typeof user !== "string") {
       setError(null);
       changeUser(user);
-      // finishSignup();
+      finishSignup();
     } else {
       setError(null);
       setError(user);
