@@ -110,8 +110,7 @@ async function createHappiness({ text, emoji, date }) {
   await setDoc(yearRef, newHappiness);
 }
 
-async function getHappiness(year) {
-  const uid = auth.currentUser.uid;
+async function getHappiness(year, uid) {
   const yearRef = collection(DB, "Happiness", uid, year);
   const querySnapshot = await getDocs(yearRef);
 
@@ -127,9 +126,8 @@ async function getHappiness(year) {
   return { data, length };
 }
 
-async function countHappiness(year) {
+async function countHappiness(year, uid) {
   // 입력받은 해에 작성된 개수 확인
-  const uid = auth.currentUser.uid;
   const yearRef = collection(DB, "Happiness", uid, year);
   const querySnapshot = await getDocs(yearRef);
   let count = querySnapshot._snapshot.docChanges.length;
