@@ -5,6 +5,7 @@ import {
   signOut,
   createUserWithEmailAndPassword,
   updateProfile,
+  onAuthStateChanged,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -28,7 +29,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const DB = getFirestore(app);
-
 
 async function login(email, password) {
   try {
@@ -86,8 +86,13 @@ async function createUserDoc(user) {
 
 function getCurrentUser() {
   try {
-    const user = auth.currentUser;
-    return user;
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        return user;
+      } else {
+        return null;
+      }
+    });
   } catch (error) {
     console.log("firebase getCurrentUser", error.message);
   }
