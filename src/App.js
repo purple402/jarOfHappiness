@@ -1,6 +1,6 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Login, Main, Write } from "./screens";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./AppRoutes";
 import { UserProvider } from "./UserContext";
 import { WindowWidthProvider } from "./WindowWidthContext";
 import "./App.css";
@@ -12,19 +12,7 @@ function App() {
       <WindowWidthProvider>
         <UserProvider>
           <div className="App">
-            <Routes>
-              <Route path="/jarOfHappiness" element={<Login />} />
-              <Route path="/jarOfHappiness/main" element={<Main />} />
-              <Route path="/jarOfHappiness/write" element={<Write />} />
-              <Route
-                path="*"
-                element={
-                  <>
-                    <p>주소를 다시 확인해주세요!</p>
-                  </>
-                }
-              />
-            </Routes>
+            <AppRoutes />
           </div>
         </UserProvider>
       </WindowWidthProvider>
