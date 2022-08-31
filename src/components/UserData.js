@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { getHappiness, countHappiness } from "../firebase";
 import "./UserData.css";
+import { useUser } from "../UserContext";
 
 function UserData() {
   const informRef = useRef(null);
@@ -24,6 +25,9 @@ function UserData() {
     }
   }
 
+  // countHappiness, getHappiness에 쓸 uid
+  const uid = useUser().uid;
+
   useEffect(() => {
     async function fetchData() {
       const yearString = year.toString();
@@ -33,12 +37,15 @@ function UserData() {
         const lastYearLocalData = JSON.parse(localStorage.getItem(year - 1));
         setLastYearCount(lastYearLocalData.length);
       } else {
-        const lastYearHappiness = await countHappiness((year - 1).toString());
+        const lastYearHappiness = await countHappiness(
+          (year - 1).toString(),
+          uid
+        );
         setLastYearCount(lastYearHappiness);
       }
 
       // firebase의 자료 개수 확인
-      const count = await countHappiness(yearString);
+      const count = await countHappiness(yearString, uid);
 
       if (count === 0) {
         // 저장된 행복 없는 경우
@@ -54,7 +61,7 @@ function UserData() {
       if (localDataCount !== count) {
         // localStorage 저장본과 firebase 자료 다른 경우
         // localStorage에 업데이트
-        const firebaseData = await getHappiness(yearString);
+        const firebaseData = await getHappiness(yearString, uid);
         localStorage.setItem(yearString, JSON.stringify(firebaseData.data));
         localData = JSON.parse(localStorage.getItem(yearString));
       } else {
