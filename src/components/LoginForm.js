@@ -1,8 +1,29 @@
 import React from "react";
 import { login } from "../firebase.js";
-import "./Login.css";
 import { useSetUser } from "../UserContext";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+const Container = styled.div``;
+
+const StyledLabel = styled.label`
+  display: block;
+  margin-bottom: 4px;
+  font-size: 16px;
+`;
+
+const StyledInput = styled.input`
+  font-size: 15px;
+  margin-bottom: 6px;
+  height: 20px;
+  width: 95%;
+`;
+
+const SignupDiv = styled.div`
+  margin-top: 10px;
+  text-align: center;
+`;
+
 
 function LoginForm({ onSignup, setError }) {
   const changeUser = useSetUser();
@@ -26,20 +47,20 @@ function LoginForm({ onSignup, setError }) {
   }
 
   return (
-    <div className="Login">
+    <Container>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="id">이메일</label>
-          <input type="email" id="id" name="id" required />
+          <StyledLabel htmlFor="id">이메일</StyledLabel>
+          <StyledInput type="email" id="id" name="id" required />
         </div>
         <div>
-          <label htmlFor="password">비밀번호</label>
-          <input type="password" id="password" name="password" required />
+          <StyledLabel htmlFor="password">비밀번호</StyledLabel>
+          <StyledInput type="password" id="password" name="password" required />
         </div>
         <input type="submit" className="greenBtn" value="로그인" />
       </form>
       {/* 회원가입 버튼 */}
-      <div className="signup">
+      <SignupDiv>
         <span>회원이 아니신가요?</span>
         <input
           type="button"
@@ -47,7 +68,7 @@ function LoginForm({ onSignup, setError }) {
           className="blueBtn"
           onClick={handleSignupBtn}
         />
-      </div>
+      </SignupDiv>
       {/* 설명서 링크 */}
       <a
         className="info"
@@ -57,7 +78,7 @@ function LoginForm({ onSignup, setError }) {
       >
         설명서를 참고해주세요!
       </a>
-    </div>
+    </Container>
   );
 }
 
