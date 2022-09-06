@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { getCurrentUser, updateUserDisplayName } from "../firebase";
 import { Alert } from ".";
 
-function UpdateProfileForm(props) {
   const user = getCurrentUser();
+function UpdateProfileForm({ finishUpdateProfile }) {
   const [displayName, setDisplayName] = useState(user.displayName);
   const [alert, setAlert] = useState(null);
 
@@ -14,7 +14,7 @@ function UpdateProfileForm(props) {
       await updateUserDisplayName(displayName);
       setAlert(null)
     }
-    props.finishUpdateProfile();
+    finishUpdateProfile();
   }
 
   function handleDisplayName(e) {
@@ -26,7 +26,7 @@ function UpdateProfileForm(props) {
   }
 
   function closeModal() {
-    props.finishUpdateProfile();
+    finishUpdateProfile();
   }
 
   return (
