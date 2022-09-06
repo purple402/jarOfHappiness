@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { getCurrentUser, updateUserDisplayName } from "../firebase";
+import { updateUserDisplayName } from "../firebase";
+import { useUser, useSetUser } from "../UserContext";
 import { Alert } from ".";
 
-  const user = getCurrentUser();
 function UpdateProfileForm({ finishUpdateProfile }) {
+  const user = useUser();
+  const changeUser = useSetUser();
   const [displayName, setDisplayName] = useState(user.displayName);
   const [alert, setAlert] = useState(null);
 
@@ -12,7 +14,8 @@ function UpdateProfileForm({ finishUpdateProfile }) {
     if (displayName !== user.displayName) {
       setAlert("profileUpdate-loading");
       await updateUserDisplayName(displayName);
-      setAlert(null)
+      changeUser({ ...user, displayName: displayName });
+      setAlert(null);
     }
     finishUpdateProfile();
   }
@@ -73,9 +76,7 @@ function UpdateProfileForm({ finishUpdateProfile }) {
           <input type="submit" className="greenBtn" value="적용" />
         </div>
       </form>
-      {alert && (
-        <Alert code={alert} finishAlert={(alert) => setAlert(alert)} />
-      )}
+      {alert && <Alert code={alert} finishAlert={(alert) => setAlert(alert)} />}
     </div>
   );
 }
