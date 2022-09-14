@@ -1,5 +1,40 @@
 import React, { useRef, useEffect, useState } from "react";
-import "./Alert.css";
+import styled from "styled-components";
+
+// styled-component 사용하니 Alert 처음 나타날 때
+// 폰트 스타일이 깨졌다가 다시 돌아옴
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  width: 100%;
+`;
+
+const AlertBody = styled.div`
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 250px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -70px;
+  transition: transform 0.3s ease-in-out;
+
+  &.show {
+    transform: translateY(70px);
+  }
+`;
+
+const Message = styled.p`
+  color: white;
+  font-size: 15px;
+`;
 
 function Alert(props) {
   const [show, setShow] = useState(false);
@@ -36,9 +71,9 @@ function Alert(props) {
           "행복을 저장하고 있습니다. <br/> 잠시만 기다려 주세요.";
         break;
       case "auth/network-request-failed":
-        messageRef.current.innerHTML = 
+        messageRef.current.innerHTML =
           "인터넷에 연결되어 있지 않습니다. <br/> 접속상태를 확인해주세요.";
-          break;
+        break;
       default:
         messageRef.current.innerHTML =
           "오류가 발생했습니다. </br> 잠시 후 다시 시도해주세요.";
@@ -56,11 +91,11 @@ function Alert(props) {
   }, 2500);
 
   return (
-    <div className="Alert">
-      <div className={show ? "alertBody show" : "alertBody"}>
-        <p id="message" ref={messageRef}></p>
-      </div>
-    </div>
+    <Container>
+      <AlertBody className={show && "show"}>
+        <Message ref={messageRef}></Message>
+      </AlertBody>
+    </Container>
   );
 }
 
